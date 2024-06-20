@@ -1,0 +1,19 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class DiplomaController : WeaponController
+{
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    protected override void Attack()
+    {
+        base.Attack();
+        GameObject spawnedDiploma = Instantiate(prefab);
+        spawnedDiploma.transform.position = transform.position;
+        spawnedDiploma.GetComponent<DiplomaBehaviour>().DirectionChecker(player.lastMove);
+    }
+}
