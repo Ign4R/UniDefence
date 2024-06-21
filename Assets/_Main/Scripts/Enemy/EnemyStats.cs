@@ -31,5 +31,6 @@ public class EnemyStats : MonoBehaviour
     void Kill()
     {
         Destroy(gameObject);
+        
     }
 }

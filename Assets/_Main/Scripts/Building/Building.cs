@@ -32,6 +32,8 @@ public class Building : MonoBehaviour
     void Kill()
     {
         Destroy(gameObject);
+
+        GameManager.instance.GameOver();
     }
 
     IEnumerator MakeVulnerableAgain()
