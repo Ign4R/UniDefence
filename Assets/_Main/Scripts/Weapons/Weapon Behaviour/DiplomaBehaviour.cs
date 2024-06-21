@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class DiplomaBehaviour : WeaponBehaviour
 {
-    DiplomaController diplomaController;
-
     protected override void Start()
     {
         base.Start();
-        diplomaController = FindObjectOfType<DiplomaController>();
     }
 
     private void Update()
     {
-        transform.position += diplomaController.speed * Time.deltaTime * direction;
+        transform.position += weaponData.Speed * Time.deltaTime * direction;
     }
 }

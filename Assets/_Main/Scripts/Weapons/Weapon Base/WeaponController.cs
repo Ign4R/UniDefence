@@ -9,14 +9,9 @@ using UnityEngine;
 public class WeaponController : MonoBehaviour
 {
     [Header("Weapon Stats")]
-    public GameObject prefab;
-    public float damage;
-    public float speed;
-    public float cooldownDuration; //enfriamiento.
+    public WeaponScriptableObject weaponData;
+
     float currentCooldown;
-    public int pierce;
-    //la cant de tiempo que un arma puede ir
-    //hasta alcanzar a un enemigo antes de ser destruido.
 
     protected Player player;
 
@@ -27,7 +22,7 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentCooldown = cooldownDuration;
+        currentCooldown = weaponData.CooldownDuration;
     }
 
     protected virtual void Update()
@@ -42,6 +37,6 @@ public class WeaponController : MonoBehaviour
     protected virtual void Attack()
     {
         //reinicia el ciclo de tiempo.
-        currentCooldown = cooldownDuration;
+        currentCooldown = weaponData.CooldownDuration;
     }
 }

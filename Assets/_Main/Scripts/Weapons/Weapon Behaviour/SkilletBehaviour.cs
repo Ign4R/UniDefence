@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkilletBehaviour : MonoBehaviour
+public class SkilletBehaviour : WeaponBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.position += weaponData.Speed * Time.deltaTime * direction;
     }
 }

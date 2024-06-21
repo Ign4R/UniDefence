@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public EnemyScriptableObject enemyData;
     [SerializeField] Transform targetDestination;
-    [SerializeField] float speed = 2f;
+    //[SerializeField] float speed = 2f;
 
     Rigidbody2D rb;
 
@@ -22,20 +23,18 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         Vector3 direction = (targetDestination.position - transform.position).normalized;
-        rb.velocity = direction * speed;
+        rb.velocity = direction * enemyData.MoveSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("Building"))
         {
-            Attack();
-        }
-    }
+            Debug.Log("colision?");
 
-    private void Attack()
-    {
-        Debug.Log("attacking");
+            Building building = collision.gameObject.GetComponent<Building>();
+            building.TakeDamage(enemyData.Damage);
+        }        
     }
 
 

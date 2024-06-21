@@ -15,7 +15,7 @@ public class SkilletController : WeaponController
     protected override void Attack()
     {
         base.Attack();
-        GameObject spawnedSkillet = Instantiate(prefab);
+        GameObject spawnedSkillet = Instantiate(weaponData.Prefab);
         spawnedSkillet.transform.position = transform.position;
         spawnedSkillet.transform.parent = transform;
     }
