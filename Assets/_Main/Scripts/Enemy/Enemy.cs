@@ -6,7 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
     [SerializeField] Transform targetDestination;
-    //[SerializeField] float speed = 2f;
+
+    //[SerializeField] bool isTouchingEnemy = false;
 
     Rigidbody2D rb;
 
@@ -24,6 +25,22 @@ public class Enemy : MonoBehaviour
     {
         Vector3 direction = (targetDestination.position - transform.position).normalized;
         rb.velocity = direction * enemyData.MoveSpeed;
+
+        //como evitar que el enemigo empuje al jugador!?
+        //Vector3 distance = targetDestination.position - transform.position;
+        //if (distance.x <= 1.26f)
+        //if (!isTouchingEnemy)
+        //{
+        //    rb.velocity = direction * enemyData.MoveSpeed;
+        //}
+        //else
+        //{
+        //    rb.velocity = Vector2.zero;
+        //}
+
+        //transform.position = Vector3.MoveTowards(transform.position, 
+        //                                         targetDestination.position, 
+        //                                         enemyData.MoveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -34,8 +51,21 @@ public class Enemy : MonoBehaviour
 
             Building building = collision.gameObject.GetComponent<Building>();
             building.TakeDamage(enemyData.Damage);
-        }        
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("colisiona con player");
+
+            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+            player.TakeDamage(enemyData.Damage);
+
+            //isTouchingEnemy = true;
+        }
     }
 
-
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //isTouchingEnemy = false;
+    }
 }

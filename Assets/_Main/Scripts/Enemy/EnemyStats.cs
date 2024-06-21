@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
+    [SerializeField] StatusBar hpBar;
 
     //[Header("current stats")]
     float currentMoveSpeed;
@@ -21,7 +22,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-
+        hpBar.SetState(currentHealth, enemyData.MaxHealth);
         //Debug.Log(currentHealth);
 
         if (currentHealth <= 0) Kill();

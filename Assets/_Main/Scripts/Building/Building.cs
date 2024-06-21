@@ -5,6 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public BuildingScriptableObject buildingData;
+    [SerializeField] StatusBar hpBar;
 
     //[Header("current stats")]
     float currentHealth;
@@ -12,6 +13,7 @@ public class Building : MonoBehaviour
     private void Awake()
     {
         currentHealth = buildingData.MaxHealth;
+        buildingData.Invulnerable = false;
     }
 
     public void TakeDamage(float dmg)
@@ -20,6 +22,7 @@ public class Building : MonoBehaviour
             return;
 
         currentHealth -= dmg;
+        hpBar.SetState(currentHealth, buildingData.MaxHealth);
         //Debug.Log(currentHealth);
         buildingData.Invulnerable = true;
         StartCoroutine(MakeVulnerableAgain());
