@@ -27,8 +27,8 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Update()
     {
-        currentCooldown -= Time.deltaTime;
-        if (currentCooldown <= 0f)
+        //currentCooldown -= Time.deltaTime;
+        if (Input.GetMouseButtonDown(0))
         {
             Attack();
         }
