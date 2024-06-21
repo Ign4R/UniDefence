@@ -14,6 +14,15 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        targetDestination = FindObjectOfType<Building>().transform;
+    }
+
+    private void Start()
+    {
+        //encuentra todos los gameobject que tenga el tag SpawnPoint.. (magnifico)
+        GameObject[] spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        int randomSpawnPoint = Random.Range(0, spawnPoint.Length);
+        transform.position = spawnPoint[randomSpawnPoint].transform.position;
     }
 
     private void FixedUpdate()
