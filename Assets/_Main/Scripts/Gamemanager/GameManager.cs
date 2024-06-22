@@ -7,14 +7,16 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    [Header("GameOver")]
+    [Header("Screens")]
     [SerializeField] GameObject gameOverScreen;
-    public bool isGameOver;
+    [SerializeField] GameObject endOverScreen;
 
-    [Header("Timer")]
-    public float timeValue = 90f;
-    public TMP_Text timerText;
+
+    [Header("Progress Wave")]
+    private float countMax;
+    private float countCurr;
+    [SerializeField] Image progressBarObj;
+
 
     private void Awake()
     {
@@ -27,53 +29,39 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Update()
+    private void Start()
     {
-        if(timeValue > 0f)
-        {
-            timeValue -= Time.deltaTime;
-        }
-        else
-        {
-            timeValue = 0f;
-        }
-
-        DisplayTime(timeValue);
+      
     }
-
-    void DisplayTime(float timeToDisplay)
+    public void CheckProgressWave()
     {
-        if (timeToDisplay < 0f)
+        countCurr++;
+        UpdateProgressBar();
+        if (countCurr >= countMax)
         {
-            timeToDisplay = 0;
+            EndWave();
         }
-        else if (timeToDisplay > 0)
-        {
-            timeToDisplay += 1;
-        }
+    }
+    void UpdateProgressBar()
+    {
+        // Calcula el fillAmount basado en el progreso actual
+        float fillValue = countCurr / countMax;
 
-        float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-        float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-
-        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        // Aplica el fillAmount al componente Image
+        progressBarObj.fillAmount = fillValue;
     }
 
     public void GameOver()
     {
-        StartCoroutine(CountdownRoutine());
-    }
-
-    IEnumerator CountdownRoutine()
-    {
-        yield return new WaitForSeconds(0.15f); //Esperas un segundo.
-
-        isGameOver = true;
-        ShowGameOverScreen();
-    }
-
-    public void ShowGameOverScreen()
-    {
         gameOverScreen.SetActive(true);
     }
+    public void EndWave()
+    {
+        countCurr = 0;
+        endOverScreen.SetActive(true);
+    }
+
+
+
+
 }

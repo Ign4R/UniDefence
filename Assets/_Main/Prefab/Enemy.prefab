@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8045772875732442995}
   - component: {fileID: 5211141509187450468}
   m_Layer: 7
-  m_Name: Enemy Wig
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 9a89a1007a55b08419adcc4be40bc438, type: 2}
+  loot: {fileID: 625960671712815116, guid: a9e7e9cf42ad8084aaf4508df67822ee, type: 3}
   hpBar: {fileID: 2232549675556502427}
 --- !u!58 &5211141509187450468
 CircleCollider2D:

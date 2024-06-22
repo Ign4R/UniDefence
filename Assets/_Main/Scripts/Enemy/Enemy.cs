@@ -61,7 +61,6 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.CompareTag("Building"))
         {
          
-
             Building building = collision.gameObject.GetComponent<Building>();
             building.TakeDamage(enemyData.Damage);
         }

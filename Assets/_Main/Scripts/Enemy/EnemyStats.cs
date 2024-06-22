@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
+    public GameObject loot;
     [SerializeField] StatusBar hpBar;
 
     //[Header("current stats")]
@@ -22,7 +23,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
-        hpBar.SetState(currentHealth, enemyData.MaxHealth);
+        //hpBar.SetState(currentHealth, enemyData.MaxHealth);
         //Debug.Log(currentHealth);
 
         if (currentHealth <= 0) Kill();
@@ -30,7 +31,12 @@ public class EnemyStats : MonoBehaviour
 
     void Kill()
     {
+        float numRandom = Random.Range(-5, 5);
+        print(numRandom);
+        if (numRandom > 0)
+        {
+            Instantiate(loot, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
-        
     }
 }
