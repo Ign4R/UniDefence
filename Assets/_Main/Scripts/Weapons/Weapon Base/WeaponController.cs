@@ -11,8 +11,10 @@ public class WeaponController : MonoBehaviour
     [Header("Weapon Stats")]
     public WeaponScriptableObject weaponData;
 
-    float currentCooldown;
+    float currentCooldown;/// no se usa ??????????????
 
+    public float fireRate = 0.5f;  // Tiempo mínimo entre disparos
+    private float nextFireTime = 0f;  // Tiempo en el que se podrá disparar nuevamente
     protected Player player;
 
     private void Awake()
@@ -28,9 +30,10 @@ public class WeaponController : MonoBehaviour
     protected virtual void Update()
     {
         //currentCooldown -= Time.deltaTime;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime)
         {
             Attack();
+            nextFireTime = Time.time + fireRate;  // Actualizar el tiempo en el que se podrá disparar nuevamente
         }
     }
 

@@ -16,33 +16,63 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        
+
         //por si el jugador no se mueve, le designas un movimiento inicial.
         lastMove = Vector3.right;
     }
 
     private void Update()
     {
-        
+
     }
 
     private void FixedUpdate()
     {
-        Move();        
+        Move();
     }
 
     void Move()
     {
-        xMove = Input.GetAxisRaw("Horizontal");
-        yMove = Input.GetAxisRaw("Vertical");
+        float xMove = Input.GetAxisRaw("Horizontal");
+        float yMove = Input.GetAxisRaw("Vertical");
+
+
+        if (Mathf.Abs(xMove) > Mathf.Abs(yMove))
+        {
+            // Si el movimiento horizontal es mayor, ignorar el movimiento vertical
+            yMove = 0;
+        }
+        else
+        {
+            // Si el movimiento vertical es mayor o igual, ignorar el movimiento horizontal
+            xMove = 0;
+        }
 
         moveDirection = new Vector2(xMove, yMove).normalized;
 
-        rb.velocity = moveDirection * speed; 
+        rb.velocity = moveDirection * speed;
 
-        if(moveDirection != Vector3.zero)
+        if (xMove < 0)
         {
-            //guardas la ultima posicion.
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else if (xMove > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+        if (yMove < 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+        }
+        else if (yMove > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+        }
+
+        if (moveDirection != Vector3.zero)
+        {
+            // Guarda la última dirección de movimiento
             lastMove = moveDirection;
         }
     }

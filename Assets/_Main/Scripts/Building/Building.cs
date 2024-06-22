@@ -5,6 +5,7 @@ using UnityEngine;
 public class Building : MonoBehaviour
 {
     public BuildingScriptableObject buildingData;
+    public EnemySpawnController enemySpawner;
     [SerializeField] StatusBar hpBar;
 
     //[Header("current stats")]
@@ -31,9 +32,9 @@ public class Building : MonoBehaviour
 
     void Kill()
     {
-        Destroy(gameObject);
-
         GameManager.instance.GameOver();
+        enemySpawner.StopSpawn();
+        gameObject.SetActive(false);
     }
 
     IEnumerator MakeVulnerableAgain()

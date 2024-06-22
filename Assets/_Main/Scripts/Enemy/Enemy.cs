@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        targetDestination = FindObjectOfType<Building>().transform;
+        targetDestination = FindObjectOfType<Building>()?.transform;
     }
 
     private void Start()
@@ -27,7 +27,11 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (targetDestination != null)
+        {
+            Move();
+        }
+        
     }
 
     private void Move()
@@ -56,7 +60,7 @@ public class Enemy : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Building"))
         {
-            Debug.Log("colision?");
+         
 
             Building building = collision.gameObject.GetComponent<Building>();
             building.TakeDamage(enemyData.Damage);

@@ -7,7 +7,7 @@ public class ChangeScene : MonoBehaviour
 {
     public void PlayAgain()
     {
-        SceneManager.LoadScene("GamePlay");
+        SceneManager.LoadScene(1);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

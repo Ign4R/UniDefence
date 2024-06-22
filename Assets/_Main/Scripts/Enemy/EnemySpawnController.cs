@@ -4,33 +4,30 @@ using UnityEngine;
 
 public class EnemySpawnController : MonoBehaviour
 {
+    private bool canSpawn = true;
+    private Coroutine spawnerCoroutine;
     [SerializeField] GameObject[] enemyPrefab;
     [Range(0,20)][SerializeReference]float spawnRate = 20f; //rango de aparicion, range(limita el numero, y no puede ser menor a 1 ni mayor a 10)
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnNewEnemy());
+        canSpawn = true;
+        spawnerCoroutine = StartCoroutine(SpawnNewEnemy());
     }
 
     IEnumerator SpawnNewEnemy()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1/spawnRate);
-
-            float random = Random.Range(0.0f, 1.0f);
-
-            Instantiate(enemyPrefab[0]); //strong enemy
-
-            //if(random < GameManager.Instance.difficulty * 0.1f) //arranca con 10 % de probabilidad de que salga el enemigo fuerte.
-            //{
-            //    Instantiate(enemyPrefab[0]); //strong enemy
-            //}
-            //else
-            //{
-            //    Instantiate(enemyPrefab[1]);
-            //}
+            yield return new WaitForSeconds(1 / spawnRate);
+            Instantiate(enemyPrefab[0]);
         }
+
+    }
+
+    public void StopSpawn()
+    {
+        StopCoroutine(spawnerCoroutine);
     }
 }
