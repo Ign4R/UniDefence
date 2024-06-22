@@ -36,12 +36,13 @@ public class UIOptions : MonoBehaviour
     {
         //buttonClip.Play();
         paused = !paused;
-        Time.timeScale = paused ? 0 : 1;
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void MenuGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }
