@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
         float xMove = Input.GetAxisRaw("Horizontal");
         float yMove = Input.GetAxisRaw("Vertical");
 
-
         if (Mathf.Abs(xMove) > Mathf.Abs(yMove))
         {
             // Si el movimiento horizontal es mayor, ignorar el movimiento vertical

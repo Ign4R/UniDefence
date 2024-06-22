@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 
     //[SerializeField] bool isTouchingEnemy = false;
 
+    [SerializeField] float timeToDie = 1f;
+
     Rigidbody2D rb;
 
     private void Awake()
@@ -30,8 +32,7 @@ public class Enemy : MonoBehaviour
         if (targetDestination != null)
         {
             Move();
-        }
-        
+        }        
     }
 
     private void Move()
@@ -59,10 +60,11 @@ public class Enemy : MonoBehaviour
     private void OnCollisionStay2D(Collision2D collision)
     {
         if(collision.gameObject.CompareTag("Building"))
-        {
-         
+        {         
             Building building = collision.gameObject.GetComponent<Building>();
             building.TakeDamage(enemyData.Damage);
+            
+            Kill();
         }
 
         if (collision.gameObject.CompareTag("Player"))
@@ -73,7 +75,13 @@ public class Enemy : MonoBehaviour
             player.TakeDamage(enemyData.Damage);
 
             //isTouchingEnemy = true;
+            Kill();
         }
+    }
+
+    void Kill()
+    {
+        Destroy(gameObject, timeToDie);
     }
 
     private void OnCollisionExit2D(Collision2D collision)

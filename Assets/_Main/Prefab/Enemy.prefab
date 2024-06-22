@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: 9a89a1007a55b08419adcc4be40bc438, type: 2}
   targetDestination: {fileID: 0}
+  timeToDie: 0.5
 --- !u!114 &-8045772875732442995
 MonoBehaviour:
   m_ObjectHideFlags: 0

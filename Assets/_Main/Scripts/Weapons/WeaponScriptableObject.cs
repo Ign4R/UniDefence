@@ -12,7 +12,6 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField] private float damage;
     public float Damage { get => damage; set => damage = value; }
 
-
     [SerializeField] private float speed;
     public float Speed { get => speed; set => speed = value; }
 

@@ -26,6 +26,7 @@ public class EnemySpawnController : MonoBehaviour
         }
 
     }
+
     public void DestroyEnemies()
     {
         foreach (Transform child in enemyParent.transform)
@@ -33,6 +34,7 @@ public class EnemySpawnController : MonoBehaviour
             Destroy(child.gameObject);
         }
     }
+
     public void StopSpawn()
     {
         StopCoroutine(spawnerCoroutine);

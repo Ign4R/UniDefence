@@ -58,6 +58,4 @@ public class PlayerStats : MonoBehaviour
             t--;
         }
     }
-
-
 }

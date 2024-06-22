@@ -17,14 +17,26 @@ public class WeaponController : MonoBehaviour
     private float nextFireTime = 0f;  // Tiempo en el que se podrá disparar nuevamente
     protected Player player;
 
+    [Header("Change guns")]
+    int totalWeapons = 2;
+    public int currentWeaponIndex;
+    [SerializeField] protected GameObject[] guns;
+    [SerializeField] protected GameObject weaponHolder;
+    [SerializeField] protected GameObject currentGun;
+
     private void Awake()
     {
         player = FindObjectOfType<Player>();
+
+        //
+        weaponHolder = guns[0];
+        currentGun = guns[0];
+        currentWeaponIndex = 0;
     }
 
     protected virtual void Start()
     {
-        currentCooldown = weaponData.CooldownDuration;
+        //currentCooldown = weaponData.CooldownDuration;
     }
 
     protected virtual void Update()
@@ -35,11 +47,30 @@ public class WeaponController : MonoBehaviour
             Attack();
             nextFireTime = Time.time + fireRate;  // Actualizar el tiempo en el que se podrá disparar nuevamente
         }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            currentWeaponIndex++;
+            if (currentWeaponIndex < totalWeapons)
+            {
+                guns[currentWeaponIndex - 1].SetActive(false);
+                guns[currentWeaponIndex].SetActive(true);
+            }
+            else
+            {
+                guns[currentWeaponIndex - 1].SetActive(false);
+                currentWeaponIndex = 0;
+                guns[currentWeaponIndex].SetActive(true);
+            }
+            Debug.Log(currentWeaponIndex);
+        }
     }
 
     protected virtual void Attack()
     {
         //reinicia el ciclo de tiempo.
-        currentCooldown = weaponData.CooldownDuration;
+        //currentCooldown = weaponData.CooldownDuration;
     }
+
+
 }

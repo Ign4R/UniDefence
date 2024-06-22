@@ -26,13 +26,16 @@ public class EnemyStats : MonoBehaviour
         //hpBar.SetState(currentHealth, enemyData.MaxHealth);
         //Debug.Log(currentHealth);
 
-        if (currentHealth <= 0) Kill();
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
     }
 
     void Kill()
     {
         float numRandom = Random.Range(-5, 5);
-        print(numRandom);
+        //print(numRandom);
         if (numRandom > 0)
         {
             Instantiate(loot, transform.position, Quaternion.identity);
