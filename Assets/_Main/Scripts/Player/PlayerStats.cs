@@ -28,35 +28,35 @@ public class PlayerStats : MonoBehaviour
         currentHealth -= dmg;
         hpBar.SetState(currentHealth, playerData.MaxHealth);
         Debug.Log(currentHealth);
-        playerData.Invulnerable = true;
-        StartCoroutine(MakeVulnerableAgain());
         if (currentHealth <= 0) Kill();
     }
 
     void Kill()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        GameManager.instance.GameOver();
+
     }
 
-    IEnumerator MakeVulnerableAgain()
-    {
-        //StartCoroutine(BlinkRountine());
-        yield return new WaitForSeconds(playerData.InvulnerableTime);
-        playerData.Invulnerable = false;
-    }
+    //IEnumerator MakeVulnerableAgain()
+    //{
+    //    //StartCoroutine(BlinkRountine());
+    //    yield return new WaitForSeconds(playerData.InvulnerableTime);
+    //    playerData.Invulnerable = false;
+    //}
 
-    IEnumerator BlinkRountine() //blink parpadeos
-    {
-        int t = 10;
-        while (t > 0)
-        {
-            spriteRenderer.enabled = false;
-            yield return new WaitForSeconds(t * playerData.BlinkRate);
-            spriteRenderer.enabled = true;
-            yield return new WaitForSeconds(t * playerData.BlinkRate);
-            t--;
-        }
-    }
+    //IEnumerator BlinkRountine() //blink parpadeos
+    //{
+    //    int t = 10;
+    //    while (t > 0)
+    //    {
+    //        spriteRenderer.enabled = false;
+    //        yield return new WaitForSeconds(t * playerData.BlinkRate);
+    //        spriteRenderer.enabled = true;
+    //        yield return new WaitForSeconds(t * playerData.BlinkRate);
+    //        t--;
+    //    }
+    //}
 
 
 }

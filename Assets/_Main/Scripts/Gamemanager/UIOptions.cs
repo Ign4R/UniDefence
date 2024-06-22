@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,13 +7,11 @@ public class UIOptions : MonoBehaviour
     [SerializeField] AudioSource buttonClip;
     [SerializeField] GameObject PauseOn;
     [SerializeField] bool paused = false;
-    [SerializeField] GameObject ContinueB;
-    [SerializeField] GameObject RestartB;
-    [SerializeField] GameObject MenuB;
+
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             Pause();
         }
@@ -46,9 +42,6 @@ public class UIOptions : MonoBehaviour
 
     public void MenuGame()
     {
-        //buttonClip.Play();
-        //SceneManager.LoadScene(changeScene);
-        SceneManager.LoadScene("Title");
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex-1);       
+        SceneManager.LoadScene(0);
     }
 }

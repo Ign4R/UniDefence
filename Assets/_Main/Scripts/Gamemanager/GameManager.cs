@@ -7,13 +7,14 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public EnemySpawnController enemySpawner;
     [Header("Screens")]
     [SerializeField] GameObject gameOverScreen;
-    [SerializeField] GameObject endWaveScreen;
+    [SerializeField] GameObject ScreenUpgrade;
 
 
     [Header("Progress Wave")]
-    private float countMax=10;
+   [ SerializeField] private float countMax=5;
     private float countCurr;
     [SerializeField] Image progressBarObj;
 
@@ -61,13 +62,14 @@ public class GameManager : MonoBehaviour
     public void EndWave()
     {
         countCurr = 0;
-        endWaveScreen.SetActive(true);
+        UpdateProgressBar();
+        ScreenUpgrade.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void NextRound()
     {
-        endWaveScreen.SetActive(false);
+        ScreenUpgrade.SetActive(false);
         Time.timeScale = 1f;
     }
 

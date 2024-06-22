@@ -22,11 +22,17 @@ public class EnemySpawnController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(1 / spawnRate);
-            Instantiate(enemyPrefab[0]);
+            Instantiate(enemyPrefab[0],enemyParent.transform);
         }
 
     }
-
+    public void DestroyEnemies()
+    {
+        foreach (Transform child in enemyParent.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
     public void StopSpawn()
     {
         StopCoroutine(spawnerCoroutine);
