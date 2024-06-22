@@ -7,6 +7,7 @@ public class EnemySpawnController : MonoBehaviour
     private bool canSpawn = true;
     private Coroutine spawnerCoroutine;
     [SerializeField] GameObject[] enemyPrefab;
+    [SerializeField] GameObject enemyParent;
     [Range(0,20)][SerializeReference]float spawnRate = 20f; //rango de aparicion, range(limita el numero, y no puede ser menor a 1 ni mayor a 10)
 
     // Start is called before the first frame update

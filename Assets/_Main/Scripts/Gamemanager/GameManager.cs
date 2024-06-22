@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [Header("Screens")]
     [SerializeField] GameObject gameOverScreen;
-    [SerializeField] GameObject endOverScreen;
+    [SerializeField] GameObject endWaveScreen;
 
 
     [Header("Progress Wave")]
-    private float countMax;
+    private float countMax=10;
     private float countCurr;
     [SerializeField] Image progressBarObj;
 
@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     public void CheckProgressWave()
     {
         countCurr++;
+        print(countCurr);
         UpdateProgressBar();
         if (countCurr >= countMax)
         {
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     {
         // Calcula el fillAmount basado en el progreso actual
         float fillValue = countCurr / countMax;
+
+        fillValue = Mathf.Clamp01(fillValue);
 
         // Aplica el fillAmount al componente Image
         progressBarObj.fillAmount = fillValue;
@@ -58,10 +61,15 @@ public class GameManager : MonoBehaviour
     public void EndWave()
     {
         countCurr = 0;
-        endOverScreen.SetActive(true);
+        endWaveScreen.SetActive(true);
+        Time.timeScale = 0f;
     }
 
-
+    public void NextRound()
+    {
+        endWaveScreen.SetActive(false);
+        Time.timeScale = 1f;
+    }
 
 
 }
