@@ -66,7 +66,7 @@ MonoBehaviour:
   - audioType: 1
     source: {fileID: 0}
     clipName: Music
-    audioClip: {fileID: 8300000, guid: d32d3d415f42cbf47b564e1f6197eb21, type: 3}
+    audioClip: {fileID: 8300000, guid: a4df4e48eb1021543bfe7d491fce5149, type: 3}
     isLoop: 1
     playOnAwake: 1
     volume: 0.5
