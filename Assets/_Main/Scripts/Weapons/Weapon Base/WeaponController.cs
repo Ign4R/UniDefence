@@ -23,10 +23,12 @@ public class WeaponController : MonoBehaviour
     [SerializeField] protected GameObject[] guns;
     [SerializeField] protected GameObject weaponHolder;
     [SerializeField] protected GameObject currentGun;
+    [Space]
+    [SerializeField] protected Sprite[] spriteGuns;
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<Player>();        
 
         //
         weaponHolder = guns[0];
@@ -54,7 +56,7 @@ public class WeaponController : MonoBehaviour
             if (currentWeaponIndex < totalWeapons)
             {
                 guns[currentWeaponIndex - 1].SetActive(false);
-                guns[currentWeaponIndex].SetActive(true);
+                guns[currentWeaponIndex].SetActive(true);                
             }
             else
             {
@@ -62,6 +64,8 @@ public class WeaponController : MonoBehaviour
                 currentWeaponIndex = 0;
                 guns[currentWeaponIndex].SetActive(true);
             }
+            //
+            GameManager.instance.UpdateInfo(spriteGuns[currentWeaponIndex]);
             Debug.Log(currentWeaponIndex);
         }
     }

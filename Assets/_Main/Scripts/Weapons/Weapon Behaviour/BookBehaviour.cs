@@ -7,24 +7,30 @@ public class BookBehaviour : WeaponBehaviour
     public Vector3 launchOffset = new(-0.1f, 0.3f, 0f);
     public Vector3 dirBook = new(1f, 2f, 0f);
     public bool isThrowing;
+    public float timeFly = 1.5f;
+    public float splashRange = 2f;
+    public LayerMask layerEnemy;
 
-    private void Awake()
+    Rigidbody2D rb;
+
+    protected override void Awake()
     {
+        base.Awake();
         isThrowing = true;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     protected override void Start()
     {
         base.Start();
 
+        StartCoroutine(nameof(WaitSomeTime));
     }
 
-    private void Update()
+    IEnumerator WaitSomeTime()
     {
-        //if (!isThrowing)
-        //{
-        //    transform.position += Time.deltaTime * weaponData.Speed * direction;
-        //}
+        yield return new WaitForSeconds(timeFly);
+        rb.bodyType = RigidbodyType2D.Static;
     }
 
     public void DirectionAttack(Vector3 dirAttack)
@@ -64,31 +70,32 @@ public class BookBehaviour : WeaponBehaviour
         return direction;
     }
 
-    public void DirectionChecker(Vector3 dir)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        direction = dir;
-
-        float xDir = direction.x;
-        float yDir = direction.y;
-
-        Vector3 scale = transform.localScale;
-        Vector3 rotation = transform.rotation.eulerAngles;
-
-        //aca tmb deberia ir la rotacion de la imagen del assets.
-        if (xDir == 0 && yDir != 0)
+        if (collision.CompareTag("Enemy"))
         {
-            //scale.x *= -1;
-            //scale.y *= -1;
-            rotation.z = -90f;
-        }
-        else if (xDir != 0 && yDir == 0)
-        {
-            //scale.x *= -1;
-            //scale.y *= -1;
-            rotation.z = 0f;
-        }
+            var hitColliders = Physics2D.OverlapCircleAll(transform.position, splashRange, layerEnemy);
+            foreach (var hitCol in hitColliders)
+            {
+                var enemies = hitCol.GetComponent<EnemyStats>();
 
-        transform.localScale = scale;
-        transform.rotation = Quaternion.Euler(rotation);
+                if (enemies)
+                {
+                    //porcentaje de daño!.
+                    //var closestPoint = hitCol.ClosestPoint(transform.position);
+                    //var distance = Vector3.Distance(closestPoint, transform.position);
+                    //var damagePercent = Mathf.InverseLerp(splashRange, 0, distance);
+                    //enemies.TakeDamage(damagePercent * currentDamage);
+                    
+                    //daño 10
+                    enemies.TakeDamage(currentDamage);
+                }
+            }
+
+            //EnemyStats enemy = collision.GetComponent<EnemyStats>();
+            //enemy.TakeDamage(currentDamage);
+            //Debug.Log(currentDamage);
+            //Debug.Log("hola");
+        }
     }
 }

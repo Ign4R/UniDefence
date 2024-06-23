@@ -8,7 +8,6 @@ public class UIOptions : MonoBehaviour
     [SerializeField] GameObject PauseOn;
     [SerializeField] bool paused = false;
 
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))

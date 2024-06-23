@@ -10,7 +10,7 @@ public class EnemyStats : MonoBehaviour
 
     //[Header("current stats")]
     float currentMoveSpeed;
-    float currentHealth;
+    [SerializeField] float currentHealth;
     float currentDamage;
 
     private void Awake()
@@ -28,6 +28,7 @@ public class EnemyStats : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            Debug.Log("llego ke?");
             Kill();
         }
     }
@@ -41,5 +42,6 @@ public class EnemyStats : MonoBehaviour
             Instantiate(loot, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
+        Debug.Log("llego a destruime o ke?"); 
     }
 }

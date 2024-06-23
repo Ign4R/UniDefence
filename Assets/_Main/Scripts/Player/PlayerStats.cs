@@ -14,6 +14,9 @@ public class PlayerStats : MonoBehaviour
     float currentHealth;
     float currentDamage;
 
+
+    [SerializeField] AudioSource powerUpClip;
+
     private void Awake()
     {
         currentHealth = playerData.MaxHealth;

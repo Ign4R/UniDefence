@@ -41,4 +41,20 @@ public class DiplomaBehaviour : WeaponBehaviour
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation);
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            EnemyStats enemy = collision.GetComponent<EnemyStats>();
+            enemy.TakeDamage(currentDamage);
+            ReducePierce();
+        }
+    }
+
+    void ReducePierce()
+    {
+        currentPierce--;
+        if (currentPierce <= 0) Destroy(gameObject);
+    }
 }

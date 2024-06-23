@@ -19,7 +19,7 @@ public class WeaponBehaviour : MonoBehaviour
     protected float currentCooldownDuration;
     protected int currentPierce;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         currentDamage = weaponData.Damage;
         currentSpeed = weaponData.Speed;
@@ -31,21 +31,4 @@ public class WeaponBehaviour : MonoBehaviour
     {
         Destroy(gameObject, destroyAfterSeconds);
     }   
-
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy"))
-        {
-            EnemyStats enemy = collision.GetComponent<EnemyStats>();
-            enemy.TakeDamage(currentDamage);
-            ReducePierce();
-        }
-    }
-
-    void ReducePierce()
-    {
-        currentPierce--;
-        if (currentPierce <= 0) Destroy(gameObject);
-    }
-
 }

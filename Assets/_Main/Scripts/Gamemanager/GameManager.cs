@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject ScreenUpgrade;
 
-
     [Header("Progress Wave")]
-   [ SerializeField] private float countMax=5;
+    [SerializeField] private float countMax=5;
     private float countCurr;
     [SerializeField] Image progressBarObj;
 
+    [Header("Weapon UI")]
+    [SerializeField] private Image weaponsIcon;
 
     private void Awake()
     {
@@ -30,10 +31,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-      
-    }
+
     public void CheckProgressWave()
     {
         countCurr++;
@@ -44,6 +42,7 @@ public class GameManager : MonoBehaviour
             EndWave();
         }
     }
+
     void UpdateProgressBar()
     {
         // Calcula el fillAmount basado en el progreso actual
@@ -54,7 +53,6 @@ public class GameManager : MonoBehaviour
         // Aplica el fillAmount al componente Image
         progressBarObj.fillAmount = fillValue;
     }
-
     public void GameOver()
     {
         gameOverScreen.SetActive(true);
@@ -66,12 +64,14 @@ public class GameManager : MonoBehaviour
         ScreenUpgrade.SetActive(true);
         Time.timeScale = 0f;
     }
-
     public void NextRound()
     {
         ScreenUpgrade.SetActive(false);
         Time.timeScale = 1f;
     }
-
-
+    
+    public void UpdateInfo(Sprite weapon)
+    {
+        weaponsIcon.sprite = weapon;
+    }
 }
