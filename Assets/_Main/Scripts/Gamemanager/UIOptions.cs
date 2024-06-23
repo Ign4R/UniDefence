@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class UIOptions : MonoBehaviour
 {        
     //intefaz button
-    [SerializeField] AudioSource buttonClip;
+    //[SerializeField] AudioSource buttonClip;
     [SerializeField] GameObject PauseOn;
     [SerializeField] bool paused = false;
 
@@ -25,15 +25,15 @@ public class UIOptions : MonoBehaviour
 
     public void ContinueGame()
     {
+        AudioManager.instance.Play("Button");
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
         PauseOn.SetActive(paused);
-        //buttonClip.Play();
     }
 
     public void RestartGame()
     {
-        //buttonClip.Play();
+        AudioManager.instance.Play("Button");
         paused = !paused;
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -41,6 +41,7 @@ public class UIOptions : MonoBehaviour
 
     public void MenuGame()
     {
+        AudioManager.instance.Play("Button");
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }

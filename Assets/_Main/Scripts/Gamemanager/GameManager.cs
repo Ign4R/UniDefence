@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public EnemySpawnController enemySpawner;
+
     [Header("Screens")]
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject ScreenUpgrade;
@@ -19,6 +20,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Weapon UI")]
     [SerializeField] private Image weaponsIcon;
+
+    [Header("Sound")]
+    [SerializeField] AudioSource gameOverClip;
 
     private void Awake()
     {
@@ -53,10 +57,14 @@ public class GameManager : MonoBehaviour
         // Aplica el fillAmount al componente Image
         progressBarObj.fillAmount = fillValue;
     }
+
     public void GameOver()
     {
+        //gameOverClip.Play();
+        AudioManager.instance.Play("GameOver");
         gameOverScreen.SetActive(true);
     }
+
     public void EndWave()
     {
         countCurr = 0;
@@ -64,6 +72,7 @@ public class GameManager : MonoBehaviour
         ScreenUpgrade.SetActive(true);
         Time.timeScale = 0f;
     }
+
     public void NextRound()
     {
         ScreenUpgrade.SetActive(false);

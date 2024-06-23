@@ -23,6 +23,7 @@ public class Building : MonoBehaviour
             return;
 
         currentHealth -= dmg;
+        AudioManager.instance.Play("Impact");
         hpBar.SetState(currentHealth, buildingData.MaxHealth);
         //Debug.Log(currentHealth);
         buildingData.Invulnerable = true;

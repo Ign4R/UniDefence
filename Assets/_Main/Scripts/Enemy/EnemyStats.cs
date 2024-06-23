@@ -23,6 +23,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHealth -= dmg;
+        AudioManager.instance.Play("Impact");
         //hpBar.SetState(currentHealth, enemyData.MaxHealth);
         //Debug.Log(currentHealth);
 
