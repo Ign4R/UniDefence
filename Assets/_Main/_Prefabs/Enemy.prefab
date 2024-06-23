@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1941798403368551807}
   - component: {fileID: 8479437961717785675}
   - component: {fileID: -8045772875732442995}
-  - component: {fileID: 5211141509187450468}
+  - component: {fileID: 1012270190619199409}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
@@ -32,7 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 5.1464, z: 0}
   m_LocalScale: {x: 1.4686, y: 1.4686, z: 1.4686}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -77,8 +77,8 @@ SpriteRenderer:
   m_SortingLayerID: -751321443
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.3886792, g: 0.3886792, b: 0.3886792, a: 1}
+  m_Sprite: {fileID: 21300000, guid: db522d737d9ac874b89eccdabcc15b65, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -144,8 +144,8 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 9a89a1007a55b08419adcc4be40bc438, type: 2}
   loot: {fileID: 625960671712815116, guid: a9e7e9cf42ad8084aaf4508df67822ee, type: 3}
   hpBar: {fileID: 0}
---- !u!58 &5211141509187450468
-CircleCollider2D:
+--- !u!61 &1012270190619199409
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -153,7 +153,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8807841621694361945}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 3495b7f0caf59c34b8b523f1f33426bc, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -176,6 +176,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.051097557}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.175, y: 0.7775}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 2.175, y: 0.6753049}
+  m_EdgeRadius: 0
