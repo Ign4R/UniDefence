@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
-
+    private SpriteRenderer sRender;
+    public Sprite[] sprites;
     [Header("Movement")]
     float xMove;
     float yMove;
@@ -18,20 +19,17 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        sRender= GetComponent<SpriteRenderer>();
         //por si el jugador no se mueve, le designas un movimiento inicial.
         lastMove = Vector3.right;
     }
 
     private void Update()
     {
-
-    }
-
-    private void FixedUpdate()
-    {
         Move();
     }
+
+
     public void IncrementSpeed()
     {
         if(speed < 7)
@@ -62,20 +60,24 @@ public class Player : MonoBehaviour
 
         if (xMove < 0)
         {
+            sRender.sprite = sprites[0];
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (xMove > 0)
         {
+            sRender.sprite = sprites[0];
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (yMove < 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, -90);
+            sRender.sprite = sprites[1];
+            //transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else if (yMove > 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
+            sRender.sprite = sprites[2];
+            //transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
         if (moveDirection != Vector3.zero)
