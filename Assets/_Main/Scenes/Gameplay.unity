@@ -7007,7 +7007,7 @@ PrefabInstance:
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[0].audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: a4df4e48eb1021543bfe7d491fce5149, type: 3}
+      objectReference: {fileID: 8300000, guid: 39e60f8c251539045bc3618fb20dbc14, type: 3}
     - target: {fileID: 3497620151240691112, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: musicSliderText
       value: 
