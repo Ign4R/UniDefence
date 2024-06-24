@@ -730,7 +730,6 @@ RectTransform:
   m_Children:
   - {fileID: 1705678678}
   - {fileID: 983538751}
-  - {fileID: 1304452281}
   - {fileID: 1969395058}
   - {fileID: 1619159527}
   - {fileID: 1280798106285852460}
@@ -2830,12 +2829,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1304452281}
   m_Father: {fileID: 233244329}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 861.9234, y: -446.7629}
+  m_AnchoredPosition: {x: 717, y: -437}
   m_SizeDelta: {x: 78.3724, y: 86.4216}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &983538752
@@ -3307,16 +3307,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304452280}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 233244329}
+  m_Father: {fileID: 983538751}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 862.6, y: -447.7}
+  m_AnchoredPosition: {x: 0.6765137, y: -0.9371338}
   m_SizeDelta: {x: 35.8947, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1304452282
@@ -4310,9 +4310,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 568396480, guid: ece8b2b58145ad84eb13b1112d4488bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09cbc8344f3f7074296ba53209ce886c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6073,6 +6073,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1276794962572457013, guid: fa1d2b9b6ef529d47ac28bfee7e8fd12, type: 3}
+      propertyPath: spriteGuns.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 09cbc8344f3f7074296ba53209ce886c, type: 3}
+    - target: {fileID: 1276794962572457013, guid: fa1d2b9b6ef529d47ac28bfee7e8fd12, type: 3}
+      propertyPath: spriteGuns.Array.data[1]
+      value: 
+      objectReference: {fileID: -1427609696, guid: 0676985eb0b27de45b6fa75efcae1112, type: 3}
     - target: {fileID: 2961446224323176082, guid: fa1d2b9b6ef529d47ac28bfee7e8fd12, type: 3}
       propertyPath: m_Name
       value: Player
