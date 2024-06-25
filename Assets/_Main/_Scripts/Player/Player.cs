@@ -89,6 +89,6 @@ public class Player : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

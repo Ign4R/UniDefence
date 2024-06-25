@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour
     [Header("Weapon Stats")]
     public WeaponScriptableObject weaponData;
 
-    float currentCooldown;/// no se usa ??????????????
+    float currentCooldown; // No se usa actualmente
 
     public float fireRate = 0.5f;  // Tiempo mínimo entre disparos
     private float nextFireTime = 0f;  // Tiempo en el que se podrá disparar nuevamente
@@ -28,12 +28,19 @@ public class WeaponController : MonoBehaviour
 
     private void Awake()
     {
-        player = FindObjectOfType<Player>();        
+        player = FindObjectOfType<Player>();
 
-        //
-        weaponHolder = guns[0];
-        currentGun = guns[0];
-        currentWeaponIndex = 0;
+        // Inicializar la primera arma
+        if (guns.Length > 0)
+        {
+            weaponHolder = guns[0];
+            currentGun = guns[0];
+            currentWeaponIndex = 0;
+        }
+        else
+        {
+            Debug.LogError("No weapons found in guns array.");
+        }
     }
 
     protected virtual void Start()
@@ -41,43 +48,51 @@ public class WeaponController : MonoBehaviour
         //currentCooldown = weaponData.CooldownDuration;
     }
 
-    protected virtual void Update()
+    void Update()
     {
-        //currentCooldown -= Time.deltaTime;
+        // Manejo del disparo
         if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime)
         {
             Attack();
             nextFireTime = Time.time + fireRate;  // Actualizar el tiempo en el que se podrá disparar nuevamente
         }
 
+        // Cambio de arma
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            currentWeaponIndex++;
-            if (currentWeaponIndex < totalWeapons)
-            {
-                guns[currentWeaponIndex - 1].SetActive(false);
-                guns[currentWeaponIndex].SetActive(true);                
-            }
-            else
-            {
-                guns[currentWeaponIndex - 1].SetActive(false);
-                currentWeaponIndex = 0;
-                guns[currentWeaponIndex].SetActive(true);
-            }
-            //
-            GameManager.instance.UpdateInfo(spriteGuns[currentWeaponIndex]);
-            Debug.Log(currentWeaponIndex);
+            ChangeWeapon();
         }
     }
+    private void ChangeWeapon()
+    {
+        // Desactivar el arma actual
+        guns[currentWeaponIndex].SetActive(false);
 
+        // Incrementar el índice del arma actual
+        currentWeaponIndex++;
+
+        // Reiniciar el índice si es necesario
+        if (currentWeaponIndex >= guns.Length)
+        {
+            currentWeaponIndex = 0;
+        }
+
+        // Activar la nueva arma
+        guns[currentWeaponIndex].SetActive(true);
+
+        // Chequear que no se pase del rango
+        if (currentWeaponIndex <= spriteGuns.Length)
+        {
+            GameManager.instance.UpdateInfo(spriteGuns[currentWeaponIndex]);
+        }
+       
+    }
     protected virtual void Attack()
     {
-        //cada arma podria tener su sonido.
+        // Cada arma podría tener su sonido.
         AudioManager.instance.Play("Bullet");
 
-        //reinicia el ciclo de tiempo.
+        // Reinicia el ciclo de tiempo.
         //currentCooldown = weaponData.CooldownDuration;
     }
-
-
 }

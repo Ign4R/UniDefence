@@ -132,8 +132,8 @@ MonoBehaviour:
   fireRate: 0.5
   currentWeaponIndex: 0
   guns:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2152165592388608258}
+  - {fileID: 8901905453463807206}
   weaponHolder: {fileID: 2152165592388608258}
   currentGun: {fileID: 2152165592388608258}
   spriteGuns: []
@@ -252,7 +252,7 @@ SpriteRenderer:
   m_SortingLayerID: -751321443
   m_SortingLayer: 3
   m_SortingOrder: 20
-  m_Sprite: {fileID: 21300000, guid: ca0fd536c7cba4d49860ef1db0ca3593, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32c5248dd38e4d94b9e82ed698635da7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -322,7 +322,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.010720283}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -333,7 +333,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.6753721}
   m_EdgeRadius: 0
 --- !u!114 &429898212818805183
 MonoBehaviour:
@@ -347,7 +347,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043b11a54113d664b9a13f7c3d228e6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sRender: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 32c5248dd38e4d94b9e82ed698635da7, type: 3}
+  - {fileID: 21300000, guid: 228f5aea403a1e942a0da1c7a241a01d, type: 3}
+  - {fileID: 21300000, guid: 35881abf821a2fa4bb65cbcb6feac4eb, type: 3}
   speed: 2
   moveDirection: {x: 0, y: 0, z: 0}
   lastMove: {x: 0, y: 0, z: 0}
@@ -677,17 +680,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c2c02311d99b34f863ae0c047d9d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: e2ef43b36d6d1df4681dc6cc4a96f44a, type: 2}
   fireRate: 0.5
   currentWeaponIndex: 0
   guns:
   - {fileID: 2152165592388608258}
   - {fileID: 8901905453463807206}
-  weaponHolder: {fileID: 0}
-  currentGun: {fileID: 0}
+  weaponHolder: {fileID: 7879235594276114699}
+  currentGun: {fileID: 2152165592388608258}
   spriteGuns:
-  - {fileID: 568396480, guid: ece8b2b58145ad84eb13b1112d4488bd, type: 3}
-  - {fileID: 796106727, guid: ece8b2b58145ad84eb13b1112d4488bd, type: 3}
+  - {fileID: 21300000, guid: 09cbc8344f3f7074296ba53209ce886c, type: 3}
+  - {fileID: -1427609696, guid: 0676985eb0b27de45b6fa75efcae1112, type: 3}
 --- !u!1 &8901905453463807206
 GameObject:
   m_ObjectHideFlags: 0
