@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c770f4be30894a4449a659f6f9d01c2e, type: 3}
   m_Name: Building
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  invulnerable: 1
+  maxHealth: 1000
+  invulnerable: 0
   invulnerableTime: 1.5

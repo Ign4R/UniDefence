@@ -7,6 +7,7 @@ public class Building : MonoBehaviour
     public BuildingScriptableObject buildingData;
     public EnemySpawnController enemySpawner;
     [SerializeField] StatusBar hpBar;
+    private float damage;
 
     //[Header("current stats")]
     float currentHealth;
@@ -21,16 +22,14 @@ public class Building : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        if (buildingData.Invulnerable)
-            return;
-
-        currentHealth -= dmg;
-        AudioManager.instance.Play("Impact");
-        hpBar.SetState(currentHealth, buildingData.MaxHealth);
-        //Debug.Log(currentHealth);
-        buildingData.Invulnerable = true;
+        damage += dmg;
         StartCoroutine(MakeVulnerableAgain());
-        if (currentHealth <= 0) Kill();
+        //Debug.Log(currentHealth);
+    }
+    public void UnregisterDamage(float dmg)
+    {
+        AudioManager.instance.Stop("Impact");
+        damage -= dmg;
     }
     public void UpgradeBuilindg()
     {
@@ -50,9 +49,20 @@ public class Building : MonoBehaviour
 
     IEnumerator MakeVulnerableAgain()
     {
-        //StartCoroutine(BlinkRountine());
-        yield return new WaitForSeconds(buildingData.InvulnerableTime);
-        buildingData.Invulnerable = false;
+        while (true) // Esto crea un bucle infinito
+        {
+            currentHealth -= damage;
+            if (currentHealth <= 0)
+            {
+                damage = 0;
+                Kill();
+                yield break;
+            }
+
+            hpBar.SetState(currentHealth, buildingData.MaxHealth);
+            yield return new WaitForSeconds(buildingData.InvulnerableTime);
+        
+        }
     }
 
     //IEnumerator BlinkRountine() //blink parpadeos

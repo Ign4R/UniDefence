@@ -12,6 +12,6 @@ public class DiplomaController : WeaponController
         base.Attack();
         GameObject spawnedDiploma = Instantiate(weaponData.Prefab);
         spawnedDiploma.transform.position = transform.position;
-        spawnedDiploma.GetComponent<DiplomaBehaviour>().DirectionChecker(player.lastMove);
+        spawnedDiploma.GetComponent<BulletBehaviour>().DirectionChecker(player.lastMove);
     }
 }

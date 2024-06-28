@@ -94,5 +94,7 @@ public class WeaponController : MonoBehaviour
 
         // Reinicia el ciclo de tiempo.
         //currentCooldown = weaponData.CooldownDuration;
+     
     }
+   
 }

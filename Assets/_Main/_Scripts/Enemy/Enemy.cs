@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public EnemyScriptableObject enemyData;
     [SerializeField] Transform targetDestination;
     Rigidbody2D rb;
+    private bool isMoving;
 
     private void Awake()
     {
@@ -20,6 +21,9 @@ public class Enemy : MonoBehaviour
         GameObject[] spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint");
         int randomSpawnPoint = Random.Range(0, spawnPoint.Length);
         transform.position = spawnPoint[randomSpawnPoint].transform.position;
+        transform.rotation = spawnPoint[randomSpawnPoint].transform.rotation;
+
+
     }
 
     private void FixedUpdate()
@@ -32,30 +36,34 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        Vector3 direction = (targetDestination.position - transform.position).normalized;
+        // Calcula la dirección horizontal hacia el objetivo
+        Vector3 direction = targetDestination.position - transform.position;
+
+        // Ignora la componente Y para asegurar que solo se considere el movimiento horizontal
+        if (transform.rotation.z == 0)
+        {
+            direction.y = 0;
+        }
+        else
+        {
+            direction.x = 0;
+        }
+       
+
+        // Normaliza el vector para asegurar que tenga magnitud 1
+        direction = direction.normalized;
+
+        // Establece la velocidad en la dirección horizontal
         rb.velocity = direction * enemyData.MoveSpeed;
 
-        //como evitar que el enemigo empuje al jugador!?
-        //Vector3 distance = targetDestination.position - transform.position;
-        //if (distance.x <= 1.26f)
-        //if (!isTouchingEnemy)
-        //{
-        //    rb.velocity = direction * enemyData.MoveSpeed;
-        //}
-        //else
-        //{
-        //    rb.velocity = Vector2.zero;
-        //}
-
-        //transform.position = Vector3.MoveTowards(transform.position, 
-        //                                         targetDestination.position, 
-        //                                         enemyData.MoveSpeed * Time.deltaTime);
     }
-
-    private void OnCollisionStay2D(Collision2D collision)
+  
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.CompareTag("Building"))
-        {         
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            AudioManager.instance.Play("Impact");
+            print("toque uni");
             Building building = collision.gameObject.GetComponent<Building>();
             building.TakeDamage(enemyData.Damage);
         }
@@ -68,14 +76,21 @@ public class Enemy : MonoBehaviour
             player.TakeDamage(enemyData.Damage);
         }
     }
+    
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            //AudioManager.instance.Stop("Impact");
+            Building building = collision.gameObject.GetComponent<Building>();
+            building.UnregisterDamage(enemyData.Damage);
+        }
+    }
 
     void Kill()
     {
         Destroy(gameObject);
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //isTouchingEnemy = false;
-    }
+  
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a44256b164be3446be6f590fc17fea2, type: 3}
   m_Name: BulletWeapon
   m_EditorClassIdentifier: 
-  prefab: {fileID: 60707117799962571, guid: 45260ab7d9c9e464cb28ceedc55fa0e5, type: 3}
+  prefab: {fileID: 7875530052690588662, guid: 45260ab7d9c9e464cb28ceedc55fa0e5, type: 3}
   damage: 10
   speed: 10
   cooldownDuration: 5
