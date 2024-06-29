@@ -6,6 +6,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    //int midLevel
+    //int endLevel
     public static GameManager instance;
     public EnemySpawnController enemySpawner;
     public Player player;
@@ -48,6 +50,8 @@ public class GameManager : MonoBehaviour
         {
             EndWave();
         }
+        //if(countCurr>= midLevel)
+        //{enemyLevel++;
     }
 
     void UpdateProgressBar()
