@@ -5,11 +5,12 @@ public class ItemPick : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            AudioManager.instance.Play("Item");
+            AudioManager.instance.Play("Item",true);
             GameManager.instance.CheckProgressWave();
             gameObject.SetActive(false);
-            Destroy(gameObject,2);
+            Destroy(gameObject,1);
         }
     }
+
 
 }

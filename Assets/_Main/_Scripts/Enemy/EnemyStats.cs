@@ -12,6 +12,8 @@ public class EnemyStats : MonoBehaviour
     float currentMoveSpeed;
     private float currentHealth;
     float currentDamage;
+    private bool isDamage;
+    private int damage;
 
     private void Awake()
     {
@@ -32,7 +34,7 @@ public class EnemyStats : MonoBehaviour
             Kill();
         }
     }
-
+  
     void Kill()
     {
         float numRandom = Random.Range(-5, 5);
@@ -44,4 +46,5 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
      
     }
+
 }

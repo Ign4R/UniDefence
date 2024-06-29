@@ -63,14 +63,12 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Building"))
         {
             AudioManager.instance.Play("Impact");
-            print("toque uni");
             Building building = collision.gameObject.GetComponent<Building>();
             building.TakeDamage(enemyData.Damage);
         }
-
+  
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("colisiona con player");
 
             PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(enemyData.Damage);
@@ -81,9 +79,14 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Building"))
         {
-            //AudioManager.instance.Stop("Impact");
             Building building = collision.gameObject.GetComponent<Building>();
             building.UnregisterDamage(enemyData.Damage);
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+            player.UnregisterDamage(enemyData.Damage);
         }
     }
 

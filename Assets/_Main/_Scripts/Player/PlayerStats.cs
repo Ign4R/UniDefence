@@ -24,28 +24,38 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        AudioManager.instance.Play("Impact");
+        if (currentHealth <= 0) Kill();
+        currentDamage = dmg;
         if (playerData.Invulnerable)
             return;
-
-        currentHealth -= dmg;
-        hpBar.SetState(currentHealth, playerData.MaxHealth);
-        Debug.Log(currentHealth);
-        playerData.Invulnerable = true;
-        StartCoroutine(MakeVulnerableAgain());
-        if (currentHealth <= 0) Kill();
+        StartCoroutine(ApplyDamageOverTime());
     }
-
+    public void UnregisterDamage(float dmg)
+    {
+        AudioManager.instance.Stop("Impact");
+        StopCoroutine(ApplyDamageOverTime());
+        currentDamage -= dmg;
+    }
     void Kill()
     {
         gameObject.SetActive(false);
         GameManager.instance.GameOver();
     }
 
-    IEnumerator MakeVulnerableAgain()
+    IEnumerator ApplyDamageOverTime()
     {
-        //StartCoroutine(BlinkRountine());
-        yield return new WaitForSeconds(playerData.InvulnerableTime);
-        playerData.Invulnerable = false;
+        while (true)
+        {
+            currentHealth -= currentDamage;
+            hpBar.SetState(currentHealth, playerData.MaxHealth);
+            Debug.Log(currentHealth);
+            if (currentHealth <= 0) Kill();
+            playerData.Invulnerable = true;
+            yield return new WaitForSeconds(playerData.InvulnerableTime);
+        }
+    
+
     }
 
     IEnumerator BlinkRountine() //blink parpadeos

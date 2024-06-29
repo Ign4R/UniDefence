@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    [SerializeField] protected Transform positionShoot;
     [Header("Weapon Stats")]
     public WeaponScriptableObject weaponData;
 

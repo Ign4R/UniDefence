@@ -44,8 +44,14 @@ public class AudioManager : MonoBehaviour
                 s.source.Play();
         }         
     }
-
-    public void Play(string clipName)
+    public void StopAll()
+    {
+        foreach (Sound s in sounds)
+        {
+            s.source.Stop();
+        }
+    }
+    public void Play(string clipName, bool playIfPlaying=false)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
         if(s == null)
@@ -53,7 +59,10 @@ public class AudioManager : MonoBehaviour
             Debug.LogError($"Sound: {clipName} does NOT exist!");
             return;
         }
-        s.source.Play();
+        if (!s.source.isPlaying || playIfPlaying)
+        {
+            s.source.Play();
+        }
     }
 
     public void Stop(string clipName)

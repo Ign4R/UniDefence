@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   invulnerable: 0
-  invulnerableTime: 1.5
+  invulnerableTime: 2

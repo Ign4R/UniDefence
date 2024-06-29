@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -751321443
-  m_SortingLayer: 3
+  m_SortingLayerID: 475048267
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fc7cef2674e8631459b27be1843a0d1a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -119,9 +119,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0062426925, y: -0.024971008}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.8308655
 --- !u!50 &-3005509087898085303
 Rigidbody2D:
   serializedVersion: 4
@@ -163,9 +163,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 60ef1182e40b0cd4689bc31ff1ef70ed, type: 2}
   launchOffset: {x: 0, y: 0, z: 0}
+  dirH: {x: 2, y: 3, z: 0}
+  dirV: {x: 0, y: 5, z: 0}
   prefabEffect: {fileID: 406955299775108136, guid: a69acc96b7766eb4c9ea1e36b4f46907, type: 3}
   isThrowing: 0
-  timeFly: 1.3
+  timeFly: 1.5
   splashRange: 3
   layerEnemy:
     serializedVersion: 2

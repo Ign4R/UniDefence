@@ -8,6 +8,7 @@ TagManager:
   - Building
   - SpawnPoint
   - Limit
+  - Barrera
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - Limit
   - Enemy
-  - 
-  - 
+  - Defence
+  - Player
   - 
   - 
   - 

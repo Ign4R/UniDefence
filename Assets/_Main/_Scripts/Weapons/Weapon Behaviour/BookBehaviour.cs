@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BookBehaviour : WeaponBehaviour
 {
-    public Vector3 launchOffset = new(-0.1f, 0.3f, 0f);
+    public Vector3 launchOffset = new(0.1f, 0.3f, 0f);
+    public Vector3 dirH = new Vector3(2.5f, 4, 0);
+    public Vector3 dirV = new(0.1f, 0.3f, 0f);
     public GameObject prefabEffect;
     public bool isThrowing;
     public float timeFly = 1.5f;
@@ -34,44 +36,57 @@ public class BookBehaviour : WeaponBehaviour
 
     public void DirectionAttack(Vector3 dirPlayer, float speedPlayer)
     {
-        Vector3 dirBook = new Vector3(2.5f, 4, 0);
+     
         if (isThrowing)
         {
-            DirectionBook(dirPlayer, dirBook);
+            DirectionBook(dirPlayer);
             rb.AddForce(direction * weaponData.Speed, ForceMode2D.Impulse);
         }
         transform.Translate(launchOffset);
     }
 
-    public Vector3 DirectionBook(Vector3 directionPlayer, Vector3 dirBook)
+    public Vector3 DirectionBook(Vector3 directionPlayer)
     {
-        
         if (directionPlayer.y <0) //down
         {
-            rb.gravityScale = -1;
-            direction = new Vector3(dirBook.x, -dirBook.y, 0f);
+        
+            rb.gravityScale = -2;
+            direction = -dirV;
+        
         }
         else if (directionPlayer.y > 0) //up
         {
-            rb.gravityScale = 1;
-            direction = new Vector3(dirBook.x, dirBook.y, 0f);
+            rb.gravityScale = 2;
+            direction = dirV;
         }
 
         if (directionPlayer.x > 0) //right
         {
             rb.gravityScale = 1;
-            direction = new Vector3(dirBook.x, dirBook.y, 0f);
+            direction = new Vector3(dirH.x, dirH.y, 0f);
         }
         else if (directionPlayer.x < 0) //left
         {
             rb.gravityScale = 1;
-            direction = new Vector3(-dirBook.x, dirBook.y, 0f);
+            direction = new Vector3(-dirH.x, dirH.y, 0f);
         }
      
         //Debug.Log("direction" + direction);
         return direction;
     }
-
+    public float RandomNum()
+    {
+        if (Random.Range(-2, 1) >= 0) 
+        {
+            print("aca1");
+           return dirH.x;
+        }
+        else
+        {
+            print("aca2");
+            return -dirH.x;
+        }
+    }
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))

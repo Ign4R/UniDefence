@@ -43,7 +43,6 @@ public class GameManager : MonoBehaviour
     public void CheckProgressWave()
     {
         countCurr++;
-        print(countCurr);
         UpdateProgressBar();
         if (countCurr >= countMax)
         {
