@@ -21,7 +21,7 @@ public class MeleeWeaponBehaviour : MonoBehaviour
 
     private void Awake()
     {
-        currentDamage = weaponData.Damage;
+        currentDamage = weaponData.MaxDamage;
         currentSpeed = weaponData.Speed;
         currentCooldownDuration = weaponData.CooldownDuration;
         currentPierce = weaponData.LifeTime;

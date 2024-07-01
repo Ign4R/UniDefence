@@ -34,7 +34,7 @@ public class BookBehaviour : WeaponBehaviour
         DamageInArea();
     }
 
-    public void DirectionAttack(Vector3 dirPlayer, float speedPlayer)
+    public void DirectionAttack(Vector3 dirPlayer)
     {
      
         if (isThrowing)

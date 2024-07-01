@@ -10,7 +10,7 @@ public class WeaponScriptableObject : ScriptableObject
     public GameObject Prefab { get => prefab; set => prefab = value; }
 
     [SerializeField] private float damage;
-    public float Damage { get => damage; set => damage = value; }
+    public float MaxDamage { get => damage; set => damage = value; }
 
     [SerializeField] private float speed;
     public float Speed { get => speed; set => speed = value; }
@@ -20,5 +20,8 @@ public class WeaponScriptableObject : ScriptableObject
 
     [SerializeField] private int lifeTime; //tiempo de alcance del arma..
     public int LifeTime { get => lifeTime; set => lifeTime = value; }
+
+    [SerializeField] private int maxLevelUpgrade; //tiempo de alcance del arma..
+    public int MaxLevelUpgrade { get => maxLevelUpgrade; set => maxLevelUpgrade = value; }
 
 }

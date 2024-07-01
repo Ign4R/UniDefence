@@ -17,10 +17,13 @@ public class WeaponBehaviour : MonoBehaviour
     protected float currentSpeed;
     protected float currentCooldownDuration;
     protected int maxLife;
+    public virtual void UpgradeStats()
+    {
 
+    }
     protected virtual void Awake()
     {
-        currentDamage = weaponData.Damage;
+        currentDamage = weaponData.MaxDamage;
         currentSpeed = weaponData.Speed;
         currentCooldownDuration = weaponData.CooldownDuration;
         maxLife = weaponData.LifeTime;

@@ -14,7 +14,7 @@ public class BookController : WeaponController
         base.Attack();
         GameObject spawnedBook = Instantiate(weaponData.Prefab);
         spawnedBook.transform.position = transform.position;
-        spawnedBook.GetComponent<BookBehaviour>().DirectionAttack(player.lastMove,player.Speed);
+        spawnedBook.GetComponent<BookBehaviour>().DirectionAttack(player.lastMove);
         //spawnedBook.GetComponent<BookBehaviour>().DirectionChecker(player.lastMove);
     }
 }

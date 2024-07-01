@@ -17,4 +17,9 @@ public class PlayerScriptableObject : ScriptableObject
 
     [SerializeField] float blinkRate = 0.01f;
     public float BlinkRate { get => blinkRate; set => blinkRate = value; }
+
+    [SerializeField] int shieldMaxHits;
+    public int ShieldMaxHits { get => shieldMaxHits; set => shieldMaxHits = value; }
+
+  
 }

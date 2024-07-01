@@ -1,25 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenceBarrera : MonoBehaviour
+public class DefenceBarrera : WeaponBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Collider2D coll;
-    [SerializeField] private float maxDamage=2;
     [SerializeField] private float maxHits=10;
-    private float currDamage;
+    private int maxLevelUpgrade=10;
     private bool isAttack;
     private bool isResetting;
-    private float againToTimeAttack=2;
     private int countHits;
     private float currentCooldown;
-   [SerializeField] private float maxCooldown;
+    private int countUpgrade;
 
-    private void Start()
+    /// representarlo con un numero
+
+    protected override void Start()
     {
-        currDamage = maxDamage;
-        currentCooldown = maxCooldown;
+        base.Start();
+        currentCooldown = weaponData.CooldownDuration;
     }
     private void Update()
     {
@@ -28,7 +29,7 @@ public class DefenceBarrera : MonoBehaviour
             currentCooldown -= Time.deltaTime;
             if (currentCooldown < 1)
             {
-                currentCooldown = maxCooldown;
+                currentCooldown = weaponData.CooldownDuration;
                 coll.enabled = true;
                 isResetting = false;
                 spriteRenderer.color = Color.white;
@@ -46,6 +47,18 @@ public class DefenceBarrera : MonoBehaviour
             spriteRenderer.color = Color.red;
           
         }
+    }
+
+    public override void UpgradeStats()
+    {
+        countUpgrade++;
+        if (countUpgrade <= weaponData.MaxLevelUpgrade)
+        {
+            currentDamage ++;
+            maxHits =+ 4;
+            weaponData.CooldownDuration--;
+        }
+
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -72,8 +85,8 @@ public class DefenceBarrera : MonoBehaviour
         {
             if (enemy != null)
             {
-                enemy.TakeDamage(currDamage);
-                yield return new WaitForSeconds(againToTimeAttack);
+                enemy.TakeDamage(currentDamage);
+                yield return new WaitForSeconds(weaponData.CooldownDuration);
             }
             else
             {

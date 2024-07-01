@@ -27,7 +27,6 @@ public class Building : MonoBehaviour
         AudioManager.instance.Play("Impact");
         damage += dmg;
         StartCoroutine(ApplyDamageOverTime());
-        //Debug.Log(currentHealth);
     }
     public void UnregisterDamage(float dmg)
     {
@@ -35,16 +34,15 @@ public class Building : MonoBehaviour
         StopCoroutine(ApplyDamageOverTime());
         damage -= dmg;
     }
-    public void UpgradeBuilindg()
+    public void AddDefence()
     {
-        AudioManager.instance.Stop("Impact");
         if (currentIndex < defenses.Length)
         {
             currentIndex++;
             defenses[currentIndex-1].SetActive(true);
         }
-
     }
+
     void Kill()
     {
         GameManager.instance.GameOver();
@@ -71,16 +69,4 @@ public class Building : MonoBehaviour
    
     }
 
-    //IEnumerator BlinkRountine() //blink parpadeos
-    //{
-    //    int t = 10;
-    //    while (t > 0)
-    //    {
-    //        //spriteRenderer.enabled = false;
-    //        //yield return new WaitForSeconds(t * blinkRate);
-    //        //spriteRenderer.enabled = true;
-    //        //yield return new WaitForSeconds(t * blinkRate);
-    //        t--;
-    //    }
-    //}
 }

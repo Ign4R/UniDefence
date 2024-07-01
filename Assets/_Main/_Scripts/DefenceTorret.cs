@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class DefenceTorret : MonoBehaviour
+public class DefenceTorret : WeaponBehaviour
 {
     public GameObject prefabProyectil = null;
     public Transform positionShoot;
     private Vector3 dirMove;
+    [Range(0.5f,3)]
     [SerializeField] private float speed;
+    [Range(0.5f, 1)]
     [SerializeField] private float fireRate;
 
     private float nextFireTime;
   
     private bool isFreeze;
+    private int countUpgrade;
 
-    private void Start()
+    protected override void Awake()
     {
         dirMove = Vector2.down;
     }
+    
     void Update()
     {
         if (!isFreeze)
@@ -36,7 +40,16 @@ public class DefenceTorret : MonoBehaviour
 
 
     }
-
+    public override void UpgradeStats()
+    {
+        countUpgrade++;
+        if (countUpgrade <= weaponData.MaxLevelUpgrade)
+        {
+            currentDamage++;
+            speed =+ 0.25f; //valores a partir de su rango y su cantidad de pasos
+            fireRate-=0.05f;//valores a partir de su rango y su cantidad de pasos
+        }
+    }
     private void Movement()
     {
         transform.position += dirMove * speed * Time.deltaTime;
@@ -53,8 +66,9 @@ public class DefenceTorret : MonoBehaviour
     {
         //isAttacking = true;
         //Configuro con direccion y daño
-        GameObject spawnedDiploma = Instantiate(prefabProyectil, positionShoot.position,Quaternion.identity);
-        spawnedDiploma.GetComponent<BulletBehaviour>().DirectionChecker(transform.right);
+        GameObject prefab = Instantiate(prefabProyectil, positionShoot.position,Quaternion.identity);
+        BulletBehaviour bullet = prefab.GetComponent<BulletBehaviour>(); 
+        bullet.DirectionChecker(transform.right);
         StartCoroutine(ResumeMovement());
     }
 
