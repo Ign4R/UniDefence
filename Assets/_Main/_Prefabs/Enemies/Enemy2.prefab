@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8045772875732442995}
   - component: {fileID: 1012270190619199409}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Enemy2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: -751321443
   m_SortingLayer: 3
   m_SortingOrder: 4
-  m_Sprite: {fileID: 21300000, guid: db522d737d9ac874b89eccdabcc15b65, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a60cec45a774b634f9336cd2433aac1c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d42ff040207cc4c499aee12adbf60cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 9a89a1007a55b08419adcc4be40bc438, type: 2}
+  enemyData: {fileID: 11400000, guid: abb190f725460d342bb3c2309b25f7d0, type: 2}
   targetDestination: {fileID: 0}
 --- !u!114 &-8045772875732442995
 MonoBehaviour:
@@ -141,9 +141,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cfbe81bc7ace0548a6947cb2ef98209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 9a89a1007a55b08419adcc4be40bc438, type: 2}
+  enemyData: {fileID: 11400000, guid: abb190f725460d342bb3c2309b25f7d0, type: 2}
   loot: {fileID: 625960671712815116, guid: a9e7e9cf42ad8084aaf4508df67822ee, type: 3}
   hpBar: {fileID: 0}
+  levelEnemy: 1
+  spriteRenderer: {fileID: 5505289920871738415}
+  sprite:
+  - {fileID: 21300000, guid: db522d737d9ac874b89eccdabcc15b65, type: 3}
+  - {fileID: 21300000, guid: a60cec45a774b634f9336cd2433aac1c, type: 3}
+  - {fileID: 21300000, guid: a60cec45a774b634f9336cd2433aac1c, type: 3}
 --- !u!61 &1012270190619199409
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -180,7 +186,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.175, y: 0.7775}
+    oldSize: {x: 2.2675, y: 0.9775}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

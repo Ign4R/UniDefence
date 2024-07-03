@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,15 +21,20 @@ public class GameManager : MonoBehaviour
     [Header("Progress Wave")]
     [SerializeField] private float countMax=2;
     [SerializeField] private float waveMax=10;
+    [SerializeField] private int waveCount;
     private float countCurr;
     [SerializeField] Image progressBarObj;
+
+    [Header("States Enemy")]
+    [SerializeField] private int lowStage = 0;
+    [SerializeField] private int midStage = 3;
+    [SerializeField] private int hardStage = 6;
 
     [Header("Weapon UI")]
     [SerializeField] private Image weaponsIcon;
 
     [Header("Sound")]
     [SerializeField] AudioSource gameOverClip;
-    private int waves;
 
     private void Awake()
     {
@@ -76,10 +82,14 @@ public class GameManager : MonoBehaviour
 
     public void EndWave()
     {
-        waves++;
+        waveCount++;
+
+        //cambia el nivel del enemigo.
+        ChangeState();
+
         countCurr = 0;
         UpdateProgressBar();
-        if (waves >= waveMax)
+        if (waveCount >= waveMax)
         {
             WinGame();
         }
@@ -90,9 +100,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void NextWave()
+    void ChangeState()
     {
- 
+        if(waveCount == lowStage)
+        {
+            //enemySpawner.ChangeEnemy();
+        }
+        else if(waveCount == midStage)
+        {
+            enemySpawner.ChangeEnemy();
+        }
+        else if(waveCount == hardStage)
+        {
+            enemySpawner.ChangeEnemy();
+        }
+    }
+
+    public void NextWave()
+    { 
         countMax *= 2;
         ScreenUpgrade.SetActive(false);
         enemySpawner.ReduceSpawnRate();

@@ -317,7 +317,11 @@ MonoBehaviour:
   ScreenUpgrade: {fileID: 133277260410221519}
   countMax: 2
   waveMax: 10
+  waveCount: 0
   progressBarObj: {fileID: 657387496}
+  lowStage: 0
+  midStage: 3
+  hardStage: 6
   weaponsIcon: {fileID: 1705678679}
   gameOverClip: {fileID: 317298715}
 --- !u!4 &27069160
@@ -2757,6 +2761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab:
   - {fileID: 8807841621694361945, guid: e87d667b68c437b4489cc5e857e7aba9, type: 3}
+  - {fileID: 8807841621694361945, guid: a8eaaeffe4be718448b0d845f891a8fe, type: 3}
+  - {fileID: 8807841621694361945, guid: 7a3c3c90f12b79344bce32d3b50ef8a0, type: 3}
   enemyParent: {fileID: 1041058338}
   spawnRate: 5
 --- !u!1 &528295363

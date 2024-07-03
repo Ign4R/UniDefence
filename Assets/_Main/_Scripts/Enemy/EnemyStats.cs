@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
+
 
 public class EnemyStats : MonoBehaviour
 {
@@ -19,7 +22,7 @@ public class EnemyStats : MonoBehaviour
     {
         currentMoveSpeed = enemyData.MoveSpeed;
         currentHealth = enemyData.MaxHealth;
-        currentDamage = enemyData.Damage;        
+        currentDamage = enemyData.Damage;       
     }
 
     public void TakeDamage(float dmg)
@@ -43,8 +46,7 @@ public class EnemyStats : MonoBehaviour
         {
             Instantiate(loot, transform.position, Quaternion.identity);
         }
-        Destroy(gameObject);
-     
+        Destroy(gameObject);     
     }
 
 }

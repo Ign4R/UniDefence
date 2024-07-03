@@ -22,6 +22,7 @@ public class PlayerStats : MonoBehaviour
     private float rechargeTime;
 
     public float CurrentSpeed { get => moveSpeed; set => moveSpeed = value; }
+
     public bool ShieldActive
     {
         get { return ShieldActive; }
@@ -33,12 +34,14 @@ public class PlayerStats : MonoBehaviour
 
        
     }
+
     private void Start()
     {
         currentHealth = playerData.MaxHealth;
         shieldMaxHits = playerData.ShieldMaxHits;
         playerData.Invulnerable = false;
     }
+
     public void TakeDamage(float dmg)
     {
         if (ShieldActive)
@@ -77,8 +80,8 @@ public class PlayerStats : MonoBehaviour
         {
             CurrentSpeed++;
         }
-
     }
+
     public void UpgradeShield()
     {
         shieldMaxHits++;
@@ -110,12 +113,14 @@ public class PlayerStats : MonoBehaviour
     
 
     }
+
     IEnumerator RestoreShield()
     {
         yield return new WaitForSeconds(rechargeTime);
         ShieldActive = true;
         yield break;
     }
+
     IEnumerator BlinkRountine() //blink parpadeos
     {
         int t = 10;
