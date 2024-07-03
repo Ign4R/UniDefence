@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: db522d737d9ac874b89eccdabcc15b65, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -144,12 +144,6 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 993f1b5d2fd2dd746880c1443d239966, type: 2}
   loot: {fileID: 625960671712815116, guid: a9e7e9cf42ad8084aaf4508df67822ee, type: 3}
   hpBar: {fileID: 0}
-  levelEnemy: 2
-  spriteRenderer: {fileID: 5505289920871738415}
-  sprite:
-  - {fileID: 21300000, guid: db522d737d9ac874b89eccdabcc15b65, type: 3}
-  - {fileID: 21300000, guid: a60cec45a774b634f9336cd2433aac1c, type: 3}
-  - {fileID: 21300000, guid: a60cec45a774b634f9336cd2433aac1c, type: 3}
 --- !u!61 &1012270190619199409
 BoxCollider2D:
   m_ObjectHideFlags: 0
