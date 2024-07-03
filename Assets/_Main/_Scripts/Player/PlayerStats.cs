@@ -22,12 +22,8 @@ public class PlayerStats : MonoBehaviour
     private float rechargeTime;
 
     public float CurrentSpeed { get => moveSpeed; set => moveSpeed = value; }
-    public bool ShieldActive
-    {
-        get { return ShieldActive; }
-        private set { ShieldActive = value; }
-    }
-
+    public bool ShieldActive { get; set ; }
+  
     private void Awake()
     {
 
