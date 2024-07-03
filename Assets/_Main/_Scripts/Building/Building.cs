@@ -8,7 +8,7 @@ public class Building : MonoBehaviour
     public EnemySpawnController enemySpawner;
     [SerializeField] StatusBar hpBar;
     private float damage;
-    private bool isDamage;
+
 
     //[Header("current stats")]
     float currentHealth;
@@ -23,16 +23,15 @@ public class Building : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        isDamage = true;
         AudioManager.instance.Play("Impact");
         damage += dmg;
         StartCoroutine(ApplyDamageOverTime());
     }
     public void UnregisterDamage(float dmg)
     {
-        isDamage = false;
-        StopCoroutine(ApplyDamageOverTime());
         damage -= dmg;
+        AudioManager.instance.Stop("Impact");
+        StopCoroutine(ApplyDamageOverTime());
     }
     public void AddDefence()
     {
@@ -52,7 +51,7 @@ public class Building : MonoBehaviour
 
     IEnumerator ApplyDamageOverTime()
     {
-        while (isDamage) // Esto crea un bucle infinito
+        while (true) // Esto crea un bucle infinito
         {
             currentHealth -= damage;
             if (currentHealth <= 0)
@@ -61,7 +60,7 @@ public class Building : MonoBehaviour
                 Kill();
                 yield break;
             }
-            AudioManager.instance.Play("Impact");
+            AudioManager.instance.Play("Impact",true);
             hpBar.SetState(currentHealth, buildingData.MaxHealth);
             yield return new WaitForSeconds(buildingData.InvulnerableTime);
 

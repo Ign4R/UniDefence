@@ -51,7 +51,7 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
-    public void Play(string clipName, bool playIfPlaying=false)
+    public void Play(string clipName, bool playIfPlaying = false)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
         if(s == null)
@@ -79,6 +79,6 @@ public class AudioManager : MonoBehaviour
     public void UpdateMixerVolume()
     {
         musicMixerGroup.audioMixer.SetFloat("Music Volume", Mathf.Log10(AudioOptionManager.MusicVolume) * 20);
-        soundEffectsMixterGruop.audioMixer.SetFloat("Sound Effect Volume", Mathf.Log10(AudioOptionManager.MusicVolume) * 20);
+        soundEffectsMixterGruop.audioMixer.SetFloat("Sound Effect Volume", Mathf.Log10(AudioOptionManager.SoundEffectsVolume) * 20);
     }
 }

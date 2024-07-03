@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Book Weapon
   m_EditorClassIdentifier: 
   prefab: {fileID: 1663182942494646606, guid: 088bc9c7da727974d930a3ea7876bd8f, type: 3}
-  damage: 10
+  damage: 3
   speed: 2.5
   cooldownDuration: 2
   lifeTime: 0
+  maxLevelUpgrade: 0
