@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         enemySpawner.StopSpawn();
         player.OnPlayer(false);
         AudioManager.instance.Play("GameOver");
+        Cursor.visible = true;
         gameOverScreen.SetActive(true);
     }
 
@@ -133,6 +134,7 @@ public class GameManager : MonoBehaviour
         enemySpawner.DestroyEnemies();
         player.OnPlayer(false);
         winOverScreen.SetActive(true);
+        Cursor.visible = true;
     }
     public void UpdateInfo(Sprite weapon)
     {

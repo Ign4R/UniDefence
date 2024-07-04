@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     Rigidbody2D rb;
-    private SpriteRenderer sRender;
+   [SerializeField] private Animator _animator;
     public Sprite[] sprites;
     [Header("Movement")]
     float xMove;
@@ -19,7 +19,6 @@ public class Player : MonoBehaviour
     {
         _stats = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
-        sRender= GetComponent<SpriteRenderer>();
         lastMove = Vector3.right;
         //por si el jugador no se mueve, le designas un movimiento inicial.
     }
@@ -43,29 +42,30 @@ public class Player : MonoBehaviour
             xMove = 0;
         }
 
+        _animator.SetFloat("Speed", rb.velocity.x);
         moveDirection = new Vector2(xMove, yMove).normalized;
 
         rb.velocity = moveDirection * _stats.CurrentSpeed;
 
         if (xMove < 0)
         {
-            sRender.sprite = sprites[0];
+            _animator.SetBool("Horizontal",true);
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (xMove > 0)
         {
-            sRender.sprite = sprites[0];
+            _animator.SetBool("Horizontal", true);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (yMove < 0)
         {
-            sRender.sprite = sprites[1];
+            _animator.SetBool("Back", true);
             //transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else if (yMove > 0)
         {
-            sRender.sprite = sprites[2];
+            _animator.SetBool("Front", true);
             //transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 

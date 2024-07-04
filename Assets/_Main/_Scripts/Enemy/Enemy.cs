@@ -66,7 +66,6 @@ public class Enemy : MonoBehaviour
             countTargets++;
             Building target = collision.gameObject.GetComponent<Building>();
             target.SetDamage(enemyData.Damage);
-            target.TakeDamage();
             damageCoroutine = StartCoroutine(ApplyDamageOverTime(target));
         }
     }
@@ -75,9 +74,12 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") )
         {
+            PlayerStats target = collision.gameObject.GetComponent<PlayerStats>();
+            target.SetDamage(-enemyData.Damage);
             countTargets--;
             if (damageCoroutine != null)
             {
+
                 StopCoroutine(damageCoroutine);
                 damageCoroutine = null;
             }
@@ -85,6 +87,8 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Building"))
         {
+            Building target = collision.gameObject.GetComponent<Building>();
+            target.SetDamage(-enemyData.Damage);
             countTargets--;
             if (damageCoroutine != null)
             {

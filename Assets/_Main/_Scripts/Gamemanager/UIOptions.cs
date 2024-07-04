@@ -46,6 +46,7 @@ public class UIOptions : MonoBehaviour
 
     public void MenuGame()
     {
+        Cursor.visible = true;
         AudioManager.instance.Play("Button");
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
