@@ -2,4 +2,6 @@
 {
     void SetDamage(float dmg);
     void TakeDamage();
+
+
 }

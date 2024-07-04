@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class DefenceTorret : WeaponBehaviour
+public class DefenceTorret : WeaponBehaviour, IDefence
 {
     public GameObject prefabProyectil = null;
     public Transform positionShoot;
@@ -15,7 +15,8 @@ public class DefenceTorret : WeaponBehaviour
   
     private bool isFreeze;
     private int countUpgrade;
-
+    public bool OnUpgrade { get; set; }
+    public bool IsUpgrade { get; set; }
     protected override void Awake()
     {
         dirMove = Vector2.down;

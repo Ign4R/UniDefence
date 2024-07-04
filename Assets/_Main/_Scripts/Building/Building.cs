@@ -9,12 +9,8 @@ public class Building : MonoBehaviour, IDamageable
     [SerializeField] StatusBar hpBar;
     private float damage;
 
-
-    //[Header("current stats")]
     float currentHealth;
-   [SerializeField] private GameObject[] defenses;
-    private int currentIndex=0;
-    private bool isDamage;
+    [SerializeField] private GameObject[] defenses;
 
     private void Awake()
     {
@@ -23,6 +19,7 @@ public class Building : MonoBehaviour, IDamageable
     }
     public void SetDamage(float dmg)
     {
+
         damage += dmg;
     }
     public void TakeDamage()
@@ -37,21 +34,44 @@ public class Building : MonoBehaviour, IDamageable
         }   
 
     }
-
-    public void AddDefence()
-    {
-        if (currentIndex < defenses.Length)
+    public void AddDefence(string defenceType)
+    {      
+        foreach (var item in defenses)
         {
-            currentIndex++;
-            defenses[currentIndex-1].SetActive(true);
+            if (item.CompareTag(defenceType.ToString()) && !item.activeSelf) 
+            {
+                item.SetActive(true);
+                var defence = item?.GetComponent<IDefence>();
+                defence.IsUpgrade = true;
+                break;
+            }
         }
+      
     }
 
+    public void UpgradeDefence(string defenceType)
+    {
+        foreach (var item in defenses)
+        {
+            var targetUpgrade = item.GetComponent<IDefence>();
+            if (item.CompareTag(defenceType.ToString()) && targetUpgrade.OnUpgrade)
+            {
+                if (targetUpgrade.IsUpgrade) return;
+                targetUpgrade.UpgradeStats();
+                break;
+            }
+        }
+    }
+ 
     void Kill()
     {
+     
         GameManager.instance.GameOver();
         enemySpawner.StopSpawn();
         gameObject.SetActive(false);
     }
+
+
+
 
 }

@@ -10,6 +10,9 @@ TagManager:
   - Limit
   - Barrera
   - Damageable
+  - Turret
+  - Barrier
+  - Upgrade
   layers:
   - Default
   - TransparentFX

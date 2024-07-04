@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenceBarrera : WeaponBehaviour
+public class DefenceBarrera : WeaponBehaviour, IDefence
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Collider2D coll;
@@ -14,6 +14,9 @@ public class DefenceBarrera : WeaponBehaviour
     private int countHits;
     private float currentCooldown;
     private int countUpgrade;
+
+    public bool OnUpgrade { get ; set ; }
+    public bool IsUpgrade { get; set; }
 
     /// representarlo con un numero
 
