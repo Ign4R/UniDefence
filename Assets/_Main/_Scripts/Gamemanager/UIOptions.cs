@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIOptions : MonoBehaviour
 {        
@@ -7,6 +8,7 @@ public class UIOptions : MonoBehaviour
     //[SerializeField] AudioSource buttonClip;
     [SerializeField] GameObject PauseOn;
     [SerializeField] bool paused = false;
+    [SerializeField] Button[] buttonsPause;
 
     private void Update()
     {
@@ -18,6 +20,7 @@ public class UIOptions : MonoBehaviour
 
     void Pause()
     {
+        buttonsPause[1].interactable = true;
         GameManager.instance.IsPlayerOn(false);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
@@ -27,7 +30,7 @@ public class UIOptions : MonoBehaviour
     }
 
     public void ContinueGame()
-    {
+    {  
         GameManager.instance.IsPlayerOn(true);
         Cursor.visible = false;
         AudioManager.instance.Play("Button");

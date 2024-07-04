@@ -48,8 +48,7 @@ public class BookBehaviour : WeaponBehaviour
     public Vector3 DirectionBook(Vector3 directionPlayer)
     {
         if (directionPlayer.y <0) //down
-        {
-        
+        {   
             rb.gravityScale = -2;
             direction = -dirV;
         

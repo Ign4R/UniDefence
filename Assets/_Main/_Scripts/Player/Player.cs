@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     {
         _stats = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
-        lastMove = Vector3.right;
+        lastMove = Vector3.down;
         //por si el jugador no se mueve, le designas un movimiento inicial.
     }
     private void Update()
@@ -42,30 +42,31 @@ public class Player : MonoBehaviour
             xMove = 0;
         }
 
-        _animator.SetFloat("Speed", rb.velocity.x);
         moveDirection = new Vector2(xMove, yMove).normalized;
-
         rb.velocity = moveDirection * _stats.CurrentSpeed;
+        //_animator.SetFloat("SpeedX", (int)rb.velocity.x);
+        _animator.SetInteger("SpeedX", (int)rb.velocity.x);
+        _animator.SetInteger("SpeedY", (int)rb.velocity.y);
 
         if (xMove < 0)
         {
-            _animator.SetBool("Horizontal",true);
+
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (xMove > 0)
         {
-            _animator.SetBool("Horizontal", true);
+ 
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (yMove < 0)
         {
-            _animator.SetBool("Back", true);
+  
             //transform.rotation = Quaternion.Euler(0, 0, -90);
         }
         else if (yMove > 0)
         {
-            _animator.SetBool("Front", true);
+
             //transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
@@ -73,6 +74,10 @@ public class Player : MonoBehaviour
         {
             // Guarda la última dirección de movimiento
             lastMove = moveDirection;
+        }
+        else
+        {
+            lastMove = Vector3.down;
         }
     }
 
