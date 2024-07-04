@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building : MonoBehaviour
+public class Building : MonoBehaviour, IDamageable
 {
     public BuildingScriptableObject buildingData;
     public EnemySpawnController enemySpawner;
@@ -14,25 +14,30 @@ public class Building : MonoBehaviour
     float currentHealth;
    [SerializeField] private GameObject[] defenses;
     private int currentIndex=0;
+    private bool isDamage;
 
     private void Awake()
     {
         currentHealth = buildingData.MaxHealth;
         buildingData.Invulnerable = false;
     }
-
-    public void TakeDamage(float dmg)
+    public void SetDamage(float dmg)
+    {
+        damage += dmg;
+    }
+    public void TakeDamage()
     {
         AudioManager.instance.Play("Impact");
-        damage += dmg;
-        StartCoroutine(ApplyDamageOverTime());
+        currentHealth -= damage;
+        hpBar.SetState(currentHealth, buildingData.MaxHealth);
+        if (currentHealth <= 0)
+        {
+            damage = 0;
+            Kill();
+        }   
+
     }
-    public void UnregisterDamage(float dmg)
-    {
-        damage -= dmg;
-        AudioManager.instance.Stop("Impact");
-        StopCoroutine(ApplyDamageOverTime());
-    }
+
     public void AddDefence()
     {
         if (currentIndex < defenses.Length)
@@ -47,25 +52,6 @@ public class Building : MonoBehaviour
         GameManager.instance.GameOver();
         enemySpawner.StopSpawn();
         gameObject.SetActive(false);
-    }
-
-    IEnumerator ApplyDamageOverTime()
-    {
-        while (true) // Esto crea un bucle infinito
-        {
-            currentHealth -= damage;
-            if (currentHealth <= 0)
-            {
-                damage = 0;
-                Kill();
-                yield break;
-            }
-            AudioManager.instance.Play("Impact",true);
-            hpBar.SetState(currentHealth, buildingData.MaxHealth);
-            yield return new WaitForSeconds(buildingData.InvulnerableTime);
-
-        }
-   
     }
 
 }

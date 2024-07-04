@@ -76,8 +76,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Destroy()
+    public void OnPlayer(bool value)
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(value);
     }
 }

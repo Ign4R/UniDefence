@@ -10,7 +10,7 @@ public class UIOptions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && paused == false) 
         {
             Pause();
         }
@@ -18,13 +18,18 @@ public class UIOptions : MonoBehaviour
 
     void Pause()
     {
+        GameManager.instance.IsPlayerOn(false);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         paused = !paused;
-        Time.timeScale = paused ? 0 : 1;
         PauseOn.SetActive(paused);
+        Time.timeScale = paused ? 0 : 1;
     }
 
     public void ContinueGame()
     {
+        GameManager.instance.IsPlayerOn(true);
+        Cursor.visible = false;
         AudioManager.instance.Play("Button");
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;

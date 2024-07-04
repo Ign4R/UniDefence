@@ -7,7 +7,9 @@ public class Enemy : MonoBehaviour
     public EnemyScriptableObject enemyData;
     [SerializeField] Transform targetDestination;
     Rigidbody2D rb;
-    private bool isMoving;
+    public bool test;
+    private Coroutine damageCoroutine;
+    private int countTargets;
 
     private void Awake()
     {
@@ -17,13 +19,11 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        //encuentra todos los gameobject que tenga el tag SpawnPoint.. (magnifico)
+        if (test) return;
         GameObject[] spawnPoint = GameObject.FindGameObjectsWithTag("SpawnPoint");
         int randomSpawnPoint = Random.Range(0, spawnPoint.Length);
         transform.position = spawnPoint[randomSpawnPoint].transform.position;
         transform.rotation = spawnPoint[randomSpawnPoint].transform.rotation;
-
-
     }
 
     private void FixedUpdate()
@@ -31,15 +31,13 @@ public class Enemy : MonoBehaviour
         if (targetDestination != null)
         {
             Move();
-        }        
+        }
     }
 
     private void Move()
     {
-        // Calcula la dirección horizontal hacia el objetivo
         Vector3 direction = targetDestination.position - transform.position;
 
-        // Ignora la componente Y para asegurar que solo se considere el movimiento horizontal
         if (transform.rotation.z == 0)
         {
             direction.y = 0;
@@ -48,52 +46,62 @@ public class Enemy : MonoBehaviour
         {
             direction.x = 0;
         }
-       
 
-        // Normaliza el vector para asegurar que tenga magnitud 1
         direction = direction.normalized;
 
-        // Establece la velocidad en la dirección horizontal
         rb.velocity = direction * enemyData.MoveSpeed;
-
     }
-  
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Building"))
-        {
-            AudioManager.instance.Play("Impact");
-            Building building = collision.gameObject.GetComponent<Building>();
-            building.TakeDamage(enemyData.Damage);
-        }
-  
         if (collision.gameObject.CompareTag("Player"))
         {
-
-            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.TakeDamage(enemyData.Damage);
+            countTargets++;
+            PlayerStats target = collision.gameObject.GetComponent<PlayerStats>();
+            target.SetDamage(enemyData.Damage);
+            damageCoroutine = StartCoroutine(ApplyDamageOverTime(target));
+        }
+        if (collision.gameObject.CompareTag("Building"))
+        {
+            countTargets++;
+            Building target = collision.gameObject.GetComponent<Building>();
+            target.SetDamage(enemyData.Damage);
+            target.TakeDamage();
+            damageCoroutine = StartCoroutine(ApplyDamageOverTime(target));
         }
     }
-    
+
     private void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Player") )
+        {
+            countTargets--;
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
+
+        }
         if (collision.gameObject.CompareTag("Building"))
         {
-            Building building = collision.gameObject.GetComponent<Building>();
-            building.UnregisterDamage(enemyData.Damage);
-        }
-
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-            player.UnregisterDamage(enemyData.Damage);
+            countTargets--;
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
         }
     }
 
-    void Kill()
+    IEnumerator ApplyDamageOverTime(IDamageable target)
     {
-        Destroy(gameObject);
-    }
+        while (countTargets > 0)
+        {
+            if (countTargets == 0) yield break;
+            target.TakeDamage();
+            yield return new WaitForSeconds(2);
 
-  
+        }
+    }
 }

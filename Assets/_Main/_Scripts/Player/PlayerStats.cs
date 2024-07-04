@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IDamageable
 {
     public PlayerScriptableObject playerData;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -35,22 +35,24 @@ public class PlayerStats : MonoBehaviour
         shieldMaxHits = playerData.ShieldMaxHits;
         playerData.Invulnerable = false;
     }
-    public void TakeDamage(float dmg)
+    public void SetDamage(float dmg)
     {
+        currentDamage += dmg;
+    }
+
+    public void TakeDamage()
+    {
+        AudioManager.instance.Play("DamagePJ");
+        currentHealth -= currentDamage;
+        hpBar.SetState(currentHealth, playerData.MaxHealth);
+        if (currentHealth <= 0)
+        {
+            Kill();
+        }
         if (ShieldActive)
         {
             SafeGuard();
         }
-        else
-        {
-            if (currentHealth <= 0) Kill();
-            AudioManager.instance.Play("Impact");
-            currentDamage = dmg;
-            if (playerData.Invulnerable)
-                return;
-            StartCoroutine(ApplyDamageOverTime());
-        }
-
     }
     public void SafeGuard()
     {
@@ -80,32 +82,13 @@ public class PlayerStats : MonoBehaviour
         shieldMaxHits++;
         rechargeTime--;
     }
-    public void UnregisterDamage(float dmg)
-    {
-        AudioManager.instance.Stop("Impact");
-        StopCoroutine(ApplyDamageOverTime());
-        currentDamage -= dmg;
-    }
+
     void Kill()
     {
         gameObject.SetActive(false);
         GameManager.instance.GameOver();
     }
 
-    IEnumerator ApplyDamageOverTime()
-    {
-        while (true)
-        {
-            currentHealth -= currentDamage;
-            hpBar.SetState(currentHealth, playerData.MaxHealth);
-            Debug.Log(currentHealth);
-            if (currentHealth <= 0) Kill();
-            playerData.Invulnerable = true;
-            yield return new WaitForSeconds(playerData.InvulnerableTime);
-        }
-    
-
-    }
     IEnumerator RestoreShield()
     {
         yield return new WaitForSeconds(rechargeTime);
@@ -123,5 +106,10 @@ public class PlayerStats : MonoBehaviour
             yield return new WaitForSeconds(t * playerData.BlinkRate);
             t--;
         }
+    }
+
+    public void ResetDamage()
+    {
+        throw new System.NotImplementedException();
     }
 }

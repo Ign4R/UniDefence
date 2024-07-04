@@ -47,7 +47,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        Cursor.visible = false;
+    }
     public void CheckProgressWave()
     {
         countCurr++;
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviour
     {
         //gameOverClip.Play();
         enemySpawner.StopSpawn();
-        player.Destroy();
+        player.OnPlayer(false);
         AudioManager.instance.Play("GameOver");
         gameOverScreen.SetActive(true);
     }
@@ -128,11 +131,16 @@ public class GameManager : MonoBehaviour
     {
         enemySpawner.StopSpawn();
         enemySpawner.DestroyEnemies();
-        player.Destroy();
+        player.OnPlayer(false);
         winOverScreen.SetActive(true);
     }
     public void UpdateInfo(Sprite weapon)
     {
         weaponsIcon.sprite = weapon;
+    }
+
+    public void IsPlayerOn(bool value)
+    {
+        player.OnPlayer(value);
     }
 }

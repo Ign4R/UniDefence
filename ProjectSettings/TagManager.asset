@@ -9,6 +9,7 @@ TagManager:
   - SpawnPoint
   - Limit
   - Barrera
+  - Damageable
   layers:
   - Default
   - TransparentFX

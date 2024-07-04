@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abb885419ee5e5442961c1503ceaae74, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  maxHealth: 25
+  maxHealth: 50
   invulnerable: 0
   invulnerableTime: 1.5
   blinkRate: 0.01
+  shieldMaxHits: 0
