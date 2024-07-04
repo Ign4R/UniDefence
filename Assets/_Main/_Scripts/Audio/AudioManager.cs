@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 public class AudioManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class AudioManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            //DontDestroyOnLoad(this);
         }
         else
         {
@@ -42,8 +45,42 @@ public class AudioManager : MonoBehaviour
 
             if (s.playOnAwake)
                 s.source.Play();
-        }         
+        }
     }
+
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            Stop("MusicGameplay");
+            PlayMusic("MusicMainMenu");
+        }
+        else
+        {
+            Stop("MusicMainMenu");
+            PlayMusic("MusicGameplay");
+        }
+
+        AudioOptionManager.instance.OnMusicSliderValueChange(PlayerPrefs.GetFloat("musicaVolume", 1f));
+        AudioOptionManager.instance.OnSoundEffectsSliderValueChange(PlayerPrefs.GetFloat("soundVolume", 1f));
+    }
+
+    public void PlayMusic(string clipName, bool playIfPlaying = false)
+    {
+        Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
+        if (s == null)
+        {
+            Debug.LogError($"Sound: {clipName} does NOT exist!");
+            return;
+        }
+        if (!s.source.isPlaying || playIfPlaying)
+        {
+            s.source.Play();
+            s.source.playOnAwake = true;
+            s.source.loop = true;
+        }
+    }
+
     public void StopAll()
     {
         foreach (Sound s in sounds)
@@ -61,7 +98,7 @@ public class AudioManager : MonoBehaviour
         }
         if (!s.source.isPlaying || playIfPlaying)
         {
-            s.source.Play();
+            s.source.Play();            
         }
     }
 
@@ -78,7 +115,12 @@ public class AudioManager : MonoBehaviour
 
     public void UpdateMixerVolume()
     {
-        musicMixerGroup.audioMixer.SetFloat("Music Volume", Mathf.Log10(AudioOptionManager.MusicVolume) * 20);
-        soundEffectsMixterGruop.audioMixer.SetFloat("Sound Effect Volume", Mathf.Log10(AudioOptionManager.SoundEffectsVolume) * 20);
+        float volumeMusic = Mathf.Log10(AudioOptionManager.MusicVolume) * 20;
+        musicMixerGroup.audioMixer.SetFloat("Music Volume", volumeMusic);
+        PlayerPrefs.SetFloat("musicaVolume", AudioOptionManager.MusicVolume);
+
+        float soundMusic = Mathf.Log10(AudioOptionManager.SoundEffectsVolume) * 20;
+        soundEffectsMixterGruop.audioMixer.SetFloat("Sound Effect Volume", soundMusic);
+        PlayerPrefs.SetFloat("soundVolume", AudioOptionManager.SoundEffectsVolume);
     }
 }

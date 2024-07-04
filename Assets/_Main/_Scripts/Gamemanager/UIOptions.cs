@@ -10,7 +10,7 @@ public class UIOptions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
         }
@@ -44,5 +44,10 @@ public class UIOptions : MonoBehaviour
         AudioManager.instance.Play("Button");
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+
+        //cambio de music
+        AudioManager.instance.PlayMusic("MusicMainMenu");
+        AudioManager.instance.Stop("MusicGameplay");
+        AudioOptionManager.instance.GetAudio();
     }
 }

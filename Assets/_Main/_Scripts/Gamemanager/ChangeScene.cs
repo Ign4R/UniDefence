@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
     [SerializeField] GameObject CreditOn;
+    [SerializeField] GameObject SettingOn;
     [SerializeField] bool paused = false;
 
     public void PlayAgain()
@@ -13,6 +14,11 @@ public class ChangeScene : MonoBehaviour
         AudioManager.instance.Play("Button");
         SceneManager.LoadScene(1);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //cambio de music
+        AudioManager.instance.Stop("MusicMainMenu");
+        AudioManager.instance.PlayMusic("MusicGameplay");
+        AudioOptionManager.instance.GetAudio();
     }
 
     public void Credit()
@@ -21,6 +27,14 @@ public class ChangeScene : MonoBehaviour
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
         CreditOn.SetActive(paused);
+    }
+
+    public void Setting()
+    {
+        AudioManager.instance.Play("Button");
+        paused = !paused;
+        Time.timeScale = paused ? 0 : 1;
+        SettingOn.SetActive(paused);
     }
     
     public void ContinueGame()
