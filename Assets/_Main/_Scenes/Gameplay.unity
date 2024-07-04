@@ -2018,9 +2018,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 8807841621694361945, guid: e87d667b68c437b4489cc5e857e7aba9, type: 3}
+  - {fileID: 8021429770861486384, guid: f1775212820b5d845afccfcace5d0993, type: 3}
+  - {fileID: 8021429770861486384, guid: 8e74f2e963819f141a6423ccab81f6d4, type: 3}
+  - {fileID: 8021429770861486384, guid: 1da695cda01bcd04a9abc49dd1333174, type: 3}
   enemyLevel: 0
-  enemyChainsaw: []
   enemyParent: {fileID: 1041058338}
   spawnRate: 5
 --- !u!1 &528295363

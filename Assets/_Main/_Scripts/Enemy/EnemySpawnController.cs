@@ -8,8 +8,6 @@ public class EnemySpawnController : MonoBehaviour
     private Coroutine spawnerCoroutine;
     [SerializeField] GameObject[] enemyPrefab;
     [SerializeField] private int enemyLevel = 0;
-    
-    [SerializeField] EnemyStats[] enemyChainsaw;
 
     /// enemyLevel
     [SerializeField] GameObject enemyParent;
@@ -19,7 +17,7 @@ public class EnemySpawnController : MonoBehaviour
     void Start()
     {
         canSpawn = true;
-        Instantiate(enemyPrefab[0], enemyParent.transform);
+        Instantiate(enemyPrefab[enemyLevel], enemyParent.transform);
         spawnerCoroutine = StartCoroutine(SpawnNewEnemy());
     }
 
