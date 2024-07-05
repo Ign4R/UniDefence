@@ -47,7 +47,10 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    private void Start()
+    {
+        //Cursor.visible = false;
+    }
     public void CheckProgressWave()
     {
         countCurr++;
@@ -75,13 +78,15 @@ public class GameManager : MonoBehaviour
     {
         //gameOverClip.Play();
         enemySpawner.StopSpawn();
-        player.Destroy();
+        player.OnPlayer(false);
         AudioManager.instance.Play("GameOver");
+        Cursor.visible = true;
         gameOverScreen.SetActive(true);
     }
 
     public void EndWave()
     {
+        IsPlayerOn(false);
         waveCount++;
 
         //cambia el nivel del enemigo.
@@ -117,7 +122,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void NextWave()
-    { 
+    {
+        IsPlayerOn(true);
         countMax *= 2;
         ScreenUpgrade.SetActive(false);
         enemySpawner.ReduceSpawnRate();
@@ -128,11 +134,17 @@ public class GameManager : MonoBehaviour
     {
         enemySpawner.StopSpawn();
         enemySpawner.DestroyEnemies();
-        player.Destroy();
+        player.OnPlayer(false);
         winOverScreen.SetActive(true);
+        Cursor.visible = true;
     }
     public void UpdateInfo(Sprite weapon)
     {
         weaponsIcon.sprite = weapon;
+    }
+
+    public void IsPlayerOn(bool value)
+    {
+        player.OnPlayer(value);
     }
 }

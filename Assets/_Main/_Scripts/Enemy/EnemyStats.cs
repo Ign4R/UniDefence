@@ -46,7 +46,8 @@ public class EnemyStats : MonoBehaviour
         {
             Instantiate(loot, transform.position, Quaternion.identity);
         }
-        Destroy(gameObject);     
+        gameObject.SetActive(false);
+        Destroy(gameObject, 2);
     }
 
 }

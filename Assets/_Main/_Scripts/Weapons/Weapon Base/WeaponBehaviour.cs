@@ -11,6 +11,7 @@ public class WeaponBehaviour : MonoBehaviour
     public WeaponScriptableObject weaponData;
 
     protected Vector3 direction;
+    protected bool isActive;
 
     //current stats
     protected float currentDamage;

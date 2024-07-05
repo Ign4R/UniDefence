@@ -14,7 +14,8 @@ public class EnemyScriptableObject : ScriptableObject
 
     [SerializeField] private float damage;
     public float Damage { get => damage; set => damage = value; }
-    
+
+
     public enum LevelEnemy { low, mid, hard }
     public LevelEnemy levelEnemy;
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIOptions : MonoBehaviour
 {        
@@ -7,10 +8,11 @@ public class UIOptions : MonoBehaviour
     //[SerializeField] AudioSource buttonClip;
     [SerializeField] GameObject PauseOn;
     [SerializeField] bool paused = false;
+    [SerializeField] Button[] buttonsPause;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P) && paused == false) 
         {
             Pause();
         }
@@ -18,13 +20,19 @@ public class UIOptions : MonoBehaviour
 
     void Pause()
     {
+        buttonsPause[1].interactable = true;
+        GameManager.instance.IsPlayerOn(false);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         paused = !paused;
-        Time.timeScale = paused ? 0 : 1;
         PauseOn.SetActive(paused);
+        Time.timeScale = paused ? 0 : 1;
     }
 
     public void ContinueGame()
-    {
+    {  
+        GameManager.instance.IsPlayerOn(true);
+        Cursor.visible = false;
         AudioManager.instance.Play("Button");
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
@@ -41,13 +49,15 @@ public class UIOptions : MonoBehaviour
 
     public void MenuGame()
     {
+        Cursor.visible = true;
         AudioManager.instance.Play("Button");
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+    }
 
-        //cambio de music
-        AudioManager.instance.PlayMusic("MusicMainMenu");
-        AudioManager.instance.Stop("MusicGameplay");
-        AudioOptionManager.instance.GetAudio();
+
+    public void nose()
+    {
+    
     }
 }

@@ -1,21 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class DefenceTorret : WeaponBehaviour
+using UnityEngine.UI;
+
+public class DefenceTorret : WeaponBehaviour, IDefence
 {
+    public Button upgradeDefence;
     public GameObject prefabProyectil = null;
     public Transform positionShoot;
     private Vector3 dirMove;
     [Range(0.5f,3)]
-    [SerializeField] private float speed;
-    [Range(0.5f, 1)]
+    [SerializeField] private float _currSpeedT;
+    [Range(0.3f, 1)]
     [SerializeField] private float fireRate;
 
     private float nextFireTime;
   
     private bool isFreeze;
     private int countUpgrade;
-
+    public bool UpgradeMax { get; set; }
+    public bool IsActive { get; set; }
     protected override void Awake()
     {
         dirMove = Vector2.down;
@@ -43,16 +47,22 @@ public class DefenceTorret : WeaponBehaviour
     public override void UpgradeStats()
     {
         countUpgrade++;
-        if (countUpgrade <= weaponData.MaxLevelUpgrade)
+
+        if (countUpgrade < 10)
         {
             currentDamage++;
-            speed =+ 0.25f; //valores a partir de su rango y su cantidad de pasos
-            fireRate-=0.05f;//valores a partir de su rango y su cantidad de pasos
+            _currSpeedT += 0.35f; //valores a partir de su rango y su cantidad de pasos
+            fireRate -= 0.09f;//valores a partir de su rango y su cantidad de pasos
+
+        }
+        else
+        {
+            UpgradeMax = true;
         }
     }
     private void Movement()
     {
-        transform.position += dirMove * speed * Time.deltaTime;
+        transform.position += dirMove * _currSpeedT * Time.deltaTime;
         if (transform.localPosition.y >= 0.7f)
         {
             dirMove = Vector2.down;

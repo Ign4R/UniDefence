@@ -6,7 +6,7 @@ public class EnemySpawnController : MonoBehaviour
 {
     private bool canSpawn = true;
     private Coroutine spawnerCoroutine;
-    [SerializeField] GameObject[] enemyPrefab;
+    [SerializeField] GameObject[] enemyPrefabs;
     [SerializeField] private int enemyLevel = 0;
 
     /// enemyLevel
@@ -19,6 +19,7 @@ public class EnemySpawnController : MonoBehaviour
         canSpawn = true;
         Instantiate(enemyPrefab[enemyLevel], enemyParent.transform);
         spawnerCoroutine = StartCoroutine(SpawnNewEnemy());
+
     }
 
     IEnumerator SpawnNewEnemy()
@@ -26,7 +27,16 @@ public class EnemySpawnController : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnRate);
-            Instantiate(enemyPrefab[enemyLevel],enemyParent.transform);
+
+            // Ensure enemyLevel is within the correct range
+            if (enemyLevel >= 0 && enemyLevel <= enemyPrefabs.Length)
+            {
+                Instantiate(enemyPrefabs[enemyLevel], enemyParent.transform);
+            }
+            else
+            {
+                Debug.LogWarning("Enemy level is out of range!");
+            }
         }
     }
 

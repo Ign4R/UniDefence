@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf81e911d2f495347a5b74ecb5b9afbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: e2ef43b36d6d1df4681dc6cc4a96f44a, type: 2}
   fireRate: 0.5
   currentWeaponIndex: 0
@@ -351,7 +352,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 32c5248dd38e4d94b9e82ed698635da7, type: 3}
   - {fileID: 21300000, guid: 228f5aea403a1e942a0da1c7a241a01d, type: 3}
   - {fileID: 21300000, guid: 35881abf821a2fa4bb65cbcb6feac4eb, type: 3}
-  speed: 2
   moveDirection: {x: 0, y: 0, z: 0}
   lastMove: {x: 0, y: 0, z: 0}
 --- !u!114 &4401927440648192281
@@ -369,6 +369,7 @@ MonoBehaviour:
   playerData: {fileID: 11400000, guid: 1048a8dcb07461d4b82123aaf8d379aa, type: 2}
   spriteRenderer: {fileID: 5641029995899519093}
   hpBar: {fileID: 1164282443904698257}
+  moveSpeed: 2
   powerUpClip: {fileID: 0}
 --- !u!1 &3865306639475455929
 GameObject:
@@ -414,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3521bae2f0e2ca54681f7a4c392daf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: eeefd5d25f2fdeb4c9f13ba307b3a8bf, type: 2}
   fireRate: 0.5
   currentWeaponIndex: 0
@@ -613,7 +615,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: -1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -680,6 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c2c02311d99b34f863ae0c047d9d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: e2ef43b36d6d1df4681dc6cc4a96f44a, type: 2}
   fireRate: 0.5
   currentWeaponIndex: 0
@@ -735,6 +738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f6419fdb27628498c1ea078c509b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 60ef1182e40b0cd4689bc31ff1ef70ed, type: 2}
   fireRate: 1
   currentWeaponIndex: 0

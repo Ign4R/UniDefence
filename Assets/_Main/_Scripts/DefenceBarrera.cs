@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class DefenceBarrera : WeaponBehaviour
+public class DefenceBarrera : WeaponBehaviour, IDefence
 {
+    public Button upgradeDefence;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Collider2D coll;
     [SerializeField] private float maxHits=10;
@@ -13,15 +15,18 @@ public class DefenceBarrera : WeaponBehaviour
     private bool isResetting;
     private int countHits;
     private float currentCooldown;
+    private float maxCooldown=10;
     private int countUpgrade;
 
-    /// representarlo con un numero
+    public bool UpgradeMax { get ; set ; }
+    public bool IsActive { get; set; }
 
-    protected override void Start()
+    /// representarlo con un numero
+    protected override void Awake()
     {
-        base.Start();
-        currentCooldown = weaponData.CooldownDuration;
+        currentCooldown = maxCooldown;
     }
+
     private void Update()
     {
         if (isResetting)
@@ -29,7 +34,7 @@ public class DefenceBarrera : WeaponBehaviour
             currentCooldown -= Time.deltaTime;
             if (currentCooldown < 1)
             {
-                currentCooldown = weaponData.CooldownDuration;
+                currentCooldown = maxCooldown;
                 coll.enabled = true;
                 isResetting = false;
                 spriteRenderer.color = Color.white;
@@ -52,11 +57,15 @@ public class DefenceBarrera : WeaponBehaviour
     public override void UpgradeStats()
     {
         countUpgrade++;
-        if (countUpgrade <= weaponData.MaxLevelUpgrade)
+        if (countUpgrade <= 10)
         {
             currentDamage ++;
             maxHits =+ 4;
-            weaponData.CooldownDuration--;
+            currentCooldown--;
+        }
+        else
+        {
+            UpgradeMax = true;
         }
 
     }
@@ -86,7 +95,7 @@ public class DefenceBarrera : WeaponBehaviour
             if (enemy != null)
             {
                 enemy.TakeDamage(currentDamage);
-                yield return new WaitForSeconds(weaponData.CooldownDuration);
+                yield return new WaitForSeconds(currentCooldown);
             }
             else
             {
