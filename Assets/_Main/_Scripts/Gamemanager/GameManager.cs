@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using static Cinemachine.DocumentationSortingAttribute;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int waveCount;
     private float countCurr;
     [SerializeField] Image progressBarObj;
+    [SerializeField] TMP_Text numWavesText;
+    public UnityEvent UpdateWave;
 
     [Header("States Enemy")]
     [SerializeField] private int lowStage = 0;
@@ -51,6 +54,7 @@ public class GameManager : MonoBehaviour
     {
         //Cursor.visible = false;
     }
+
     public void CheckProgressWave()
     {
         countCurr++;
@@ -87,7 +91,12 @@ public class GameManager : MonoBehaviour
     public void EndWave()
     {
         IsPlayerOn(false);
+
         waveCount++;
+
+        //
+        UpdateWavesUI(waveCount);
+        //UpdateWave?.Invoke();
 
         //cambia el nivel del enemigo.
         ChangeState();
@@ -103,6 +112,11 @@ public class GameManager : MonoBehaviour
             ScreenUpgrade.SetActive(true);
             Time.timeScale = 0f;
         }
+    }
+
+    void UpdateWavesUI(int waveCount)
+    {
+        numWavesText.text = $"{waveCount+1}/{waveMax} ";
     }
 
     void ChangeState()
