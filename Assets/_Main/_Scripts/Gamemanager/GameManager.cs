@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        progressBarObj.fillAmount = 0;
         //Cursor.visible = false;
     }
 
