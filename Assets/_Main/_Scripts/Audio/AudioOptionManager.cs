@@ -31,6 +31,7 @@ public class AudioOptionManager : MonoBehaviour
 
     public void OnMusicSliderValueChange(float value)
     {
+        if (musicVolumeSlider == null) return;
         MusicVolume = value;
         musicVolumeSlider.value = value;    
         musicSliderText.text = ((int)(value * 100)).ToString();
@@ -39,6 +40,7 @@ public class AudioOptionManager : MonoBehaviour
 
     public void OnSoundEffectsSliderValueChange(float value)
     {
+        if (soundVolumeSlider == null) return;
         SoundEffectsVolume = value;
         soundVolumeSlider.value = value;    
         soundEffectSliderText.text = ((int)(value * 100)).ToString();

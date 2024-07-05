@@ -17,7 +17,7 @@ public class EnemySpawnController : MonoBehaviour
     void Start()
     {
         canSpawn = true;
-        Instantiate(enemyPrefab[enemyLevel], enemyParent.transform);
+        Instantiate(enemyPrefabs[enemyLevel], enemyParent.transform);
         spawnerCoroutine = StartCoroutine(SpawnNewEnemy());
 
     }

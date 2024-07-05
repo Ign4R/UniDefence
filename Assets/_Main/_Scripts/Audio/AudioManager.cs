@@ -70,7 +70,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
         if (s == null)
         {
-            Debug.LogError($"Sound: {clipName} does NOT exist!");
+            //Debug.LogError($"Sound: {clipName} does NOT exist!");
             return;
         }
         if (!s.source.isPlaying || playIfPlaying)
@@ -107,7 +107,7 @@ public class AudioManager : MonoBehaviour
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
         if(s == null)
         {
-            Debug.LogError($"Sound: {clipName} does NOT exist!");
+            //Debug.LogError($"Sound: {clipName} does NOT exist!");
             return;
         }
         if (!s.source.isPlaying || playIfPlaying == false)
