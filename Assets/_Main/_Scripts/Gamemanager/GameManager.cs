@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     public void EndWave()
     {
+        IsPlayerOn(false);
         waveCount++;
 
         //cambia el nivel del enemigo.
@@ -121,7 +122,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void NextWave()
-    { 
+    {
+        IsPlayerOn(true);
         countMax *= 2;
         ScreenUpgrade.SetActive(false);
         enemySpawner.ReduceSpawnRate();

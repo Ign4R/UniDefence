@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Building : MonoBehaviour, IDamageable
 {
@@ -8,6 +9,9 @@ public class Building : MonoBehaviour, IDamageable
     public EnemySpawnController enemySpawner;
     [SerializeField] StatusBar hpBar;
     private float damage;
+    private bool maxUpgrade;
+    [SerializeField] private Button upgradeT;
+    [SerializeField] private Button upgradeB;
 
     float currentHealth;
     [SerializeField] private GameObject[] defenses;
@@ -34,19 +38,30 @@ public class Building : MonoBehaviour, IDamageable
         }   
 
     }
+ 
     public void AddDefence(string defenceType)
-    {      
+    {
+
         foreach (var item in defenses)
         {
             if (item.CompareTag(defenceType.ToString()) && !item.activeSelf) 
             {
                 item.SetActive(true);
                 var defence = item?.GetComponent<IDefence>();
-                defence.IsUpgrade = true;
+                defence.IsActive = true;
                 break;
             }
         }
-      
+
+        if (defenceType == "Turret")
+        {
+            upgradeT.interactable = true;
+        }
+        if (defenceType == "Barrier")
+        {
+            upgradeB.interactable = true;
+        }
+
     }
 
     public void UpgradeDefence(string defenceType)
@@ -54,13 +69,29 @@ public class Building : MonoBehaviour, IDamageable
         foreach (var item in defenses)
         {
             var targetUpgrade = item.GetComponent<IDefence>();
-            if (item.CompareTag(defenceType.ToString()) && targetUpgrade.OnUpgrade)
+            if (item.CompareTag(defenceType.ToString()) && targetUpgrade.IsActive)
             {
-                if (targetUpgrade.IsUpgrade) return;
                 targetUpgrade.UpgradeStats();
-                break;
+         
             }
         }
+    }
+
+    public bool CheckMax()
+    {
+        for (int i = 0; i < defenses.Length; i++)
+        {
+            var targetUpgrade = defenses[i].GetComponent<IDefence>();
+            if (targetUpgrade.UpgradeMax || targetUpgrade.IsActive )
+            {
+                return maxUpgrade= true;
+            }
+            else if(!targetUpgrade.UpgradeMax || !targetUpgrade.IsActive)
+            {
+                return maxUpgrade= false;
+            }
+        }
+        return maxUpgrade;
     }
  
     void Kill()

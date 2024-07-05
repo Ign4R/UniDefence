@@ -1,6 +1,6 @@
 ﻿interface IDefence
 {
-    bool OnUpgrade { get; set; }
-    bool IsUpgrade { get; set; }
+    bool UpgradeMax { get; set; }
+    bool IsActive { get; set; }
     void UpgradeStats();
 }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
    [SerializeField] private Animator _animator;
     public Sprite[] sprites;
+    public SpriteRenderer spriteRenderer;
     [Header("Movement")]
     float xMove;
     float yMove;
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
         _stats = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody2D>();
         lastMove = Vector3.down;
+        //_animator.enabled = false;
         //por si el jugador no se mueve, le designas un movimiento inicial.
     }
     private void Update()
@@ -44,41 +46,42 @@ public class Player : MonoBehaviour
 
         moveDirection = new Vector2(xMove, yMove).normalized;
         rb.velocity = moveDirection * _stats.CurrentSpeed;
-        //_animator.SetFloat("SpeedX", (int)rb.velocity.x);
         _animator.SetInteger("SpeedX", (int)rb.velocity.x);
         _animator.SetInteger("SpeedY", (int)rb.velocity.y);
+        //_animator.SetFloat("SpeedX", (int)rb.velocity.x);
+
 
         if (xMove < 0)
         {
-
+            spriteRenderer.sprite = sprites[0];
+       
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else if (xMove > 0)
         {
+
+            spriteRenderer.sprite = sprites[0];
  
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         if (yMove < 0)
         {
-  
-            //transform.rotation = Quaternion.Euler(0, 0, -90);
+
+            //transform.rotation = Quaternion.Euler(0, 0, -90); down
         }
         else if (yMove > 0)
         {
 
-            //transform.rotation = Quaternion.Euler(0, 0, 90);
         }
 
         if (moveDirection != Vector3.zero)
         {
+            //_animator.enabled = true;
             // Guarda la última dirección de movimiento
             lastMove = moveDirection;
         }
-        else
-        {
-            lastMove = Vector3.down;
-        }
+   
     }
 
     public void OnPlayer(bool value)

@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DefenceBarrera : WeaponBehaviour, IDefence
 {
+    public Button upgradeDefence;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Collider2D coll;
     [SerializeField] private float maxHits=10;
@@ -13,18 +15,18 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
     private bool isResetting;
     private int countHits;
     private float currentCooldown;
+    private float maxCooldown=10;
     private int countUpgrade;
 
-    public bool OnUpgrade { get ; set ; }
-    public bool IsUpgrade { get; set; }
+    public bool UpgradeMax { get ; set ; }
+    public bool IsActive { get; set; }
 
     /// representarlo con un numero
-
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
-        currentCooldown = weaponData.CooldownDuration;
+        currentCooldown = maxCooldown;
     }
+
     private void Update()
     {
         if (isResetting)
@@ -32,7 +34,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
             currentCooldown -= Time.deltaTime;
             if (currentCooldown < 1)
             {
-                currentCooldown = weaponData.CooldownDuration;
+                currentCooldown = maxCooldown;
                 coll.enabled = true;
                 isResetting = false;
                 spriteRenderer.color = Color.white;
@@ -55,11 +57,15 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
     public override void UpgradeStats()
     {
         countUpgrade++;
-        if (countUpgrade <= weaponData.MaxLevelUpgrade)
+        if (countUpgrade <= 10)
         {
             currentDamage ++;
             maxHits =+ 4;
-            weaponData.CooldownDuration--;
+            currentCooldown--;
+        }
+        else
+        {
+            UpgradeMax = true;
         }
 
     }
@@ -89,7 +95,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
             if (enemy != null)
             {
                 enemy.TakeDamage(currentDamage);
-                yield return new WaitForSeconds(weaponData.CooldownDuration);
+                yield return new WaitForSeconds(currentCooldown);
             }
             else
             {
