@@ -35,7 +35,7 @@ public class AudioOptionManager : MonoBehaviour
         MusicVolume = value;
         musicVolumeSlider.value = value;    
         musicSliderText.text = ((int)(value * 100)).ToString();
-        AudioManager.instance.UpdateMixerVolume();
+        AudioManager.instance.UpdateMixerVolumeMusic();
     }
 
     public void OnSoundEffectsSliderValueChange(float value)
@@ -44,7 +44,7 @@ public class AudioOptionManager : MonoBehaviour
         SoundEffectsVolume = value;
         soundVolumeSlider.value = value;    
         soundEffectSliderText.text = ((int)(value * 100)).ToString();
-        AudioManager.instance.UpdateMixerVolume();
+        AudioManager.instance.UpdateMixerVolumeSound();
     }
 
     public void GetAudio()

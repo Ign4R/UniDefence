@@ -20,7 +20,7 @@ public class UIOptions : MonoBehaviour
 
     void Pause()
     {
-        buttonsPause[1].interactable = true;
+        //buttonsPause[1].interactable = true;
         GameManager.instance.IsPlayerOn(false);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
@@ -53,6 +53,11 @@ public class UIOptions : MonoBehaviour
         AudioManager.instance.Play("Button");
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
+
+        //cambio de music
+        AudioManager.instance.PlayMusic("MusicMainMenu");
+        AudioManager.instance.Stop("MusicGameplay");
+        AudioOptionManager.instance.GetAudio();
     }
 
 

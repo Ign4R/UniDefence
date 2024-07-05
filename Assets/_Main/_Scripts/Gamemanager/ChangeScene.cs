@@ -42,7 +42,7 @@ public class ChangeScene : MonoBehaviour
         AudioManager.instance.Play("Button");
         paused = !paused;
         Time.timeScale = paused ? 0 : 1;
-        CreditOn.SetActive(paused);
+        //CreditOn.SetActive(paused);
     }
 
     public void Exit()

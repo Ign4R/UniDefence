@@ -61,8 +61,8 @@ public class AudioManager : MonoBehaviour
             PlayMusic("MusicGameplay");
         }
 
-        AudioOptionManager.instance.OnMusicSliderValueChange(PlayerPrefs.GetFloat("musicaVolume", 1f));
         AudioOptionManager.instance.OnSoundEffectsSliderValueChange(PlayerPrefs.GetFloat("soundVolume", 1f));
+        AudioOptionManager.instance.OnMusicSliderValueChange(PlayerPrefs.GetFloat("musicaVolume", 1f));
     }
 
     public void PlayMusic(string clipName, bool playIfPlaying = false)
@@ -116,12 +116,15 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void UpdateMixerVolume()
+    public void UpdateMixerVolumeMusic()
     {
         float volumeMusic = Mathf.Log10(AudioOptionManager.MusicVolume) * 20;
         musicMixerGroup.audioMixer.SetFloat("Music Volume", volumeMusic);
         PlayerPrefs.SetFloat("musicaVolume", AudioOptionManager.MusicVolume);
+    }
 
+    public void UpdateMixerVolumeSound()
+    {
         float soundMusic = Mathf.Log10(AudioOptionManager.SoundEffectsVolume) * 20;
         soundEffectsMixterGruop.audioMixer.SetFloat("Sound Effect Volume", soundMusic);
         PlayerPrefs.SetFloat("soundVolume", AudioOptionManager.SoundEffectsVolume);
