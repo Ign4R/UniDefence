@@ -162,9 +162,6 @@ MonoBehaviour:
   waveCount: 0
   progressBarObj: {fileID: 657387496}
   numWavesText: {fileID: 1492983607}
-  UpdateWave:
-    m_PersistentCalls:
-      m_Calls: []
   lowStage: 0
   midStage: 3
   hardStage: 6
@@ -1315,7 +1312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -697.3, y: -463.9}
+  m_AnchoredPosition: {x: -697.3, y: -477.5}
   m_SizeDelta: {x: 523.5, y: 255}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &442066378
@@ -2126,9 +2123,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 8021429770861486384, guid: f1775212820b5d845afccfcace5d0993, type: 3}
-  - {fileID: 8021429770861486384, guid: 8e74f2e963819f141a6423ccab81f6d4, type: 3}
-  - {fileID: 8021429770861486384, guid: 1da695cda01bcd04a9abc49dd1333174, type: 3}
+  - {fileID: 8849025185686445790, guid: ccde878a6a22e6a4cb7df55a08e1803b, type: 3}
+  - {fileID: 1331884327777973522, guid: 35a659e4f67b9b74480231070b668cf6, type: 3}
+  - {fileID: 820538978112504566, guid: b98e0120640d96f4e966dfa6972be2da, type: 3}
   enemyLevel: 0
   enemyParent: {fileID: 1041058338}
   spawnRate: 5
@@ -5347,8 +5344,8 @@ Transform:
   m_GameObject: {fileID: 1433666385}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.13, z: 0}
+  m_LocalScale: {x: 1, y: 0.8945647, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4979135729509273004}
@@ -5394,7 +5391,7 @@ SpriteRenderer:
   m_SortingLayerID: 475048267
   m_SortingLayer: 4
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: 1c30eb6684ead92419bf9defa078ba5c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 228f5aea403a1e942a0da1c7a241a01d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

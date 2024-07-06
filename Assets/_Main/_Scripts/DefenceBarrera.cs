@@ -77,6 +77,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
             isAttack = true;
             AudioManager.instance.Play("Impact");
             EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
+
             StartCoroutine(Attack(enemy));
         }
     }
@@ -94,6 +95,10 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         {
             if (enemy != null)
             {
+                enemy.gameObject.GetComponent<Enemy>().animator.SetTrigger("Attack");
+                //enemy.GetComponent<Animator>().SetTrigger("Attack");
+                //animator.SetTrigger("Attack");
+
                 enemy.TakeDamage(currentDamage);
                 yield return new WaitForSeconds(currentCooldown);
             }

@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     private Coroutine damageCoroutine;
     private int countTargets;
 
+    public Animator animator;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -56,6 +58,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            animator.SetTrigger("Attack");
             countTargets++;
             PlayerStats target = collision.gameObject.GetComponent<PlayerStats>();
             target.SetDamage(enemyData.Damage);
@@ -63,6 +66,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Building"))
         {
+            animator.SetTrigger("Attack");
             countTargets++;
             Building target = collision.gameObject.GetComponent<Building>();
             target.SetDamage(enemyData.Damage);
