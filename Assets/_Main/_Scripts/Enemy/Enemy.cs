@@ -77,6 +77,10 @@ public class Enemy : MonoBehaviour
             target.SetDamage(enemyData.Damage);
             damageCoroutine = StartCoroutine(ApplyDamageOverTime(target));
         }
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            AudioManager.instance.Play("Chainsaw",false,true);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -96,7 +100,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Building"))
         {
-            AudioManager.instance.Stop("Chainsaw");
+            //AudioManager.instance.Stop("Chainsaw");
             Building target = collision.gameObject.GetComponent<Building>();
             target.SetDamage(-enemyData.Damage);
             countTargets--;
@@ -106,6 +110,11 @@ public class Enemy : MonoBehaviour
                 damageCoroutine = null;
             }
         }
+        if (collision.gameObject.CompareTag("Barrier"))
+        {
+            AudioManager.instance.Play("Chainsaw");
+        }
+
     }
 
     IEnumerator ApplyDamageOverTime(IDamageable target)

@@ -88,15 +88,17 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
-    public void Play(string clipName, bool playIfPlaying = false)
+    public void Play(string clipName, bool playIfPlaying = false, bool canLoop = false)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
 
         ///por favor no pongas mas debug error gracias
         if (!s.source.isPlaying || playIfPlaying == false) 
         {
-            s.source.Play();            
+            s.source.Play();
+            s.source.loop = canLoop;
         }
+       
     }
 
     public void Stop(string clipName)
