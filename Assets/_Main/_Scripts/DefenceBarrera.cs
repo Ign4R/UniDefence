@@ -96,9 +96,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
             if (enemy != null)
             {
                 enemy.gameObject.GetComponent<Enemy>().animator.SetTrigger("Attack");
-                //enemy.GetComponent<Animator>().SetTrigger("Attack");
-                //animator.SetTrigger("Attack");
-
+                enemy.gameObject.GetComponent<Enemy>().attackClip.Play();
                 enemy.TakeDamage(currentDamage);
                 yield return new WaitForSeconds(currentCooldown);
             }
