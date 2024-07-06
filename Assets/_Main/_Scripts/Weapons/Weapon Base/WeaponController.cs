@@ -90,12 +90,14 @@ public class WeaponController : MonoBehaviour
     }
     protected virtual void Attack()
     {
+        //AudioManager.instance.Play("ShootPaper");
+
         // Cada arma podría tener su sonido.
         //AudioManager.instance.Play("Bullet");
 
         // Reinicia el ciclo de tiempo.
         //currentCooldown = weaponData.CooldownDuration;
-     
+
     }
-   
+
 }

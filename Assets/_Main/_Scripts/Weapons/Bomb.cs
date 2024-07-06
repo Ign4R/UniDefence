@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public AudioSource bombClip;
+    //public AudioSource bombClip;
 
     void Start()
     {
-        bombClip.Play();    
+        //bombClip.Play();
+        AudioManager.instance.Play("BoomBook");
     }
 }

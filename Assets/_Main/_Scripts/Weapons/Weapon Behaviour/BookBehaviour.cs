@@ -15,8 +15,6 @@ public class BookBehaviour : WeaponBehaviour
 
     Rigidbody2D rb;
 
-    public AudioSource bookClip;
-
     protected override void Awake()
     {
         base.Awake();
@@ -27,7 +25,7 @@ public class BookBehaviour : WeaponBehaviour
     protected override void Start()
     {
         base.Start();
-        bookClip.Play();
+        AudioManager.instance.Play("ShotBook");
         StartCoroutine(nameof(WaitSomeTime));
     }
 
@@ -107,6 +105,7 @@ public class BookBehaviour : WeaponBehaviour
 
             if (enemy!=null)
             {
+                AudioManager.instance.Stop("Chainsaw");
                 enemy.TakeDamage(currentDamage);
                 //gameObject.SetActive(false);
                 //Destroy(gameObject, 3);

@@ -5,14 +5,12 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class BulletBehaviour : WeaponBehaviour
 {
-    private float currentPierce=0;
-
-    public AudioSource diplomaClip;
+    private float currentPierce = 0;
 
     protected override void Start()
     {
         base.Start();
-        diplomaClip.Play();
+        AudioManager.instance.Play("ShotPaper");
     }
 
     private void Update()
@@ -20,7 +18,7 @@ public class BulletBehaviour : WeaponBehaviour
         ReducePierce();
         transform.position += direction * weaponData.Speed * Time.deltaTime;
     }
-    
+
     public void DirectionChecker(Vector3 dir)
     {
         direction = dir.normalized;
@@ -55,6 +53,7 @@ public class BulletBehaviour : WeaponBehaviour
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage);
+            AudioManager.instance.Stop("Chainsaw");
             Destroy(gameObject);
         }
 
@@ -66,12 +65,11 @@ public class BulletBehaviour : WeaponBehaviour
 
     void ReducePierce()
     {
-        currentPierce+=Time.deltaTime;
+        currentPierce += Time.deltaTime;
         if (currentPierce >= maxLife)
         {
             Destroy(gameObject);
             currentPierce = 0;
         }
-
     }
 }

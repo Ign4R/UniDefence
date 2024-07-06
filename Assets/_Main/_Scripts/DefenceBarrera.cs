@@ -87,6 +87,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         {
             EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
             StopCoroutine(Attack(enemy));
+            AudioManager.instance.Stop("Chainsaw");
         }
     }
     IEnumerator Attack(EnemyStats enemy)
@@ -96,7 +97,8 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
             if (enemy != null)
             {
                 enemy.gameObject.GetComponent<Enemy>().animator.SetTrigger("Attack");
-                enemy.gameObject.GetComponent<Enemy>().attackClip.Play();
+                //enemy.gameObject.GetComponent<Enemy>().attackClip.Play();
+                AudioManager.instance.Play("Chainsaw");
                 enemy.TakeDamage(currentDamage);
                 yield return new WaitForSeconds(currentCooldown);
             }
