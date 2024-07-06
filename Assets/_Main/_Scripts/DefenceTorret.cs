@@ -32,12 +32,10 @@ public class DefenceTorret : WeaponBehaviour, IDefence
             Movement();
         }
        
-        //Busca enemigos dentro del radio de ataque
-        //Si hay objetivo, entonces dispara
-   
         if (Time.time > nextFireTime) 
         {
-            Attack(); // Actualizar el tiempo en el que se podrá disparar nuevamente
+            ///TODO: Poner audio de torreta
+            Attack();
             nextFireTime = Time.time + fireRate;
         }
 

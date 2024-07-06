@@ -10,7 +10,7 @@ public class BulletBehaviour : WeaponBehaviour
     protected override void Start()
     {
         base.Start();
-        AudioManager.instance.Play("ShotPaper");
+        
     }
 
     private void Update()
