@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     private float countCurr;
     [SerializeField] Image progressBarObj;
     [SerializeField] TMP_Text numWavesText;
-    public UnityEvent UpdateWave;
+    //public UnityEvent UpdateWave;
 
     [Header("States Enemy")]
     [SerializeField] private int lowStage = 0;

@@ -12,7 +12,7 @@ public class UIOptions : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && paused == false) 
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && paused == false) 
         {
             Pause();
         }
