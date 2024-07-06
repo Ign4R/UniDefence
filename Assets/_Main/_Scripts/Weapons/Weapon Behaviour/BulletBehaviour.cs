@@ -53,7 +53,7 @@ public class BulletBehaviour : WeaponBehaviour
         {
             EnemyStats enemy = collision.GetComponent<EnemyStats>();
             enemy.TakeDamage(currentDamage);
-            AudioManager.instance.Stop("Chainsaw");
+            //AudioManager.instance.Stop("Chainsaw"); pq stopeas el sonido??????????
             Destroy(gameObject);
         }
 

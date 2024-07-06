@@ -91,18 +91,15 @@ public class AudioManager : MonoBehaviour
     public void Play(string clipName, bool playIfPlaying = false)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
-        if(s == null)
-        {
-            Debug.LogError($"Sound: {clipName} does NOT exist!");
-            return;
-        }
+
+        ///por favor no pongas mas debug error gracias
         if (!s.source.isPlaying || playIfPlaying == false) 
         {
             s.source.Play();            
         }
     }
 
-    public void Stop(string clipName, bool playIfPlaying = false)
+    public void Stop(string clipName)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
         if(s == null)
@@ -110,8 +107,9 @@ public class AudioManager : MonoBehaviour
             //Debug.LogError($"Sound: {clipName} does NOT exist!");
             return;
         }
-        if (!s.source.isPlaying || playIfPlaying == false)
+        if (!s.source.isPlaying)
         {
+
             s.source.Stop();
         }
     }

@@ -105,8 +105,8 @@ public class BookBehaviour : WeaponBehaviour
 
             if (enemy!=null)
             {
-                AudioManager.instance.Stop("Chainsaw");
                 enemy.TakeDamage(currentDamage);
+                //AudioManager.instance.Stop("Chainsaw"); ??????????????
                 //gameObject.SetActive(false);
                 //Destroy(gameObject, 3);
             }

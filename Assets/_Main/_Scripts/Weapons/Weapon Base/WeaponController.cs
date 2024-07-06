@@ -20,7 +20,7 @@ public class WeaponController : MonoBehaviour
 
     [Header("Change guns")]
     int totalWeapons = 2;
-    public int currentWeaponIndex;
+    static int currentWeaponIndex=0;
     [SerializeField] protected GameObject[] guns;
     [SerializeField] protected GameObject weaponHolder;
     [SerializeField] protected GameObject currentGun;
@@ -36,7 +36,6 @@ public class WeaponController : MonoBehaviour
         {
             weaponHolder = guns[0];
             currentGun = guns[0];
-            currentWeaponIndex = 0;
         }
         else
         {

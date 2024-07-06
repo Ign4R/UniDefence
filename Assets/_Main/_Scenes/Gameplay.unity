@@ -8438,8 +8438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: e2ef43b36d6d1df4681dc6cc4a96f44a, type: 2}
-  fireRate: 0.5
-  currentWeaponIndex: 0
+  fireRate: 1
   guns:
   - {fileID: 6072924349092467287}
   - {fileID: 3607577267993876403}
@@ -8554,7 +8553,6 @@ MonoBehaviour:
   positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: e2ef43b36d6d1df4681dc6cc4a96f44a, type: 2}
   fireRate: 0.5
-  currentWeaponIndex: 0
   guns:
   - {fileID: 6072924349092467287}
   - {fileID: 3607577267993876403}
@@ -8642,8 +8640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   positionShoot: {fileID: 0}
   weaponData: {fileID: 11400000, guid: 60ef1182e40b0cd4689bc31ff1ef70ed, type: 2}
-  fireRate: 1
-  currentWeaponIndex: 0
+  fireRate: 2
   guns:
   - {fileID: 6072924349092467287}
   - {fileID: 3607577267993876403}
@@ -8766,11 +8763,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[9].volume
-      value: 0.75
+      value: 0.182
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[10].isLoop
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[10].volume

@@ -60,7 +60,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             //attackClip.Play();
-            AudioManager.instance.Play("Chainsaw");
+
             animator.SetTrigger("Attack");
             countTargets++;
             PlayerStats target = collision.gameObject.GetComponent<PlayerStats>();
@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Building"))
         {
             //attackClip.Play();
-            AudioManager.instance.Play("Chainsaw");
+
             animator.SetTrigger("Attack");
             countTargets++;
             Building target = collision.gameObject.GetComponent<Building>();
@@ -96,6 +96,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Building"))
         {
+            AudioManager.instance.Stop("Chainsaw");
             Building target = collision.gameObject.GetComponent<Building>();
             target.SetDamage(-enemyData.Damage);
             countTargets--;
