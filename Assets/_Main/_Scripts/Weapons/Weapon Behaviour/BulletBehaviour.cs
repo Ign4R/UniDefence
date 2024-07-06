@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class BulletBehaviour : WeaponBehaviour
 {
     private float currentPierce=0;
 
+    public AudioSource diplomaClip;
+
     protected override void Start()
     {
         base.Start();
+        diplomaClip.Play();
     }
 
     private void Update()
