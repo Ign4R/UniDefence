@@ -7050,12 +7050,12 @@ MonoBehaviour:
   - {fileID: 649802679}
   - {fileID: 1597085397}
   - {fileID: 442066378}
-  - {fileID: 375632198}
-  - {fileID: 1685222408}
-  - {fileID: 1103745500}
   - {fileID: 1000286805}
-  - {fileID: 943962534}
   - {fileID: 948214838}
+  - {fileID: 1685222408}
+  - {fileID: 375632198}
+  - {fileID: 1103745500}
+  - {fileID: 943962534}
   - {fileID: 1652401641}
 --- !u!61 &1762250620
 BoxCollider2D:
