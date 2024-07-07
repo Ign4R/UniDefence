@@ -8739,7 +8739,7 @@ PrefabInstance:
       objectReference: {fileID: 1747750002572458886, guid: 36adb1ab9b194764d8f771a085097369, type: 2}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.size
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: soundEffectsMixterGruop
@@ -8814,6 +8814,14 @@ PrefabInstance:
       value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[12].isLoop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[12].volume
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[0].clipName
       value: MusicGameplay
       objectReference: {fileID: 0}
@@ -8864,6 +8872,10 @@ PrefabInstance:
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[11].clipName
       value: ShotSun
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[12].clipName
+      value: Barrier
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[1].audioClip
@@ -8918,11 +8930,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: b521e3c880bbc8542ba860a68f73693a, type: 3}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[12].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 99d23f794063e344ca4f0652a200a28d, type: 3}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[0].playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[1].playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[12].playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3497620151240691112, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
