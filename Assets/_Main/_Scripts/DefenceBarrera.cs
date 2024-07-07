@@ -75,7 +75,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         {
             CheckHits();
             isAttack = true;
-            AudioManager.instance.Play("Impact");
+            AudioManager.instance.Play("Barrier", false, true);
             EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
 
             StartCoroutine(Attack(enemy));
