@@ -8739,7 +8739,7 @@ PrefabInstance:
       objectReference: {fileID: 1747750002572458886, guid: 36adb1ab9b194764d8f771a085097369, type: 2}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: soundEffectsMixterGruop
@@ -8810,6 +8810,10 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[11].volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[0].clipName
       value: MusicGameplay
       objectReference: {fileID: 0}
@@ -8856,6 +8860,10 @@ PrefabInstance:
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[10].clipName
       value: Chainsaw
+      objectReference: {fileID: 0}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[11].clipName
+      value: ShotSun
       objectReference: {fileID: 0}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[1].audioClip
@@ -8905,6 +8913,10 @@ PrefabInstance:
       propertyPath: sounds.Array.data[10].audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 245f112fdd7266e4c95ea901e764c7ef, type: 3}
+    - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
+      propertyPath: sounds.Array.data[11].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b521e3c880bbc8542ba860a68f73693a, type: 3}
     - target: {fileID: 1683700332282230005, guid: 1e291d80540421d4d967b98f623b52ae, type: 3}
       propertyPath: sounds.Array.data[0].playOnAwake
       value: 0

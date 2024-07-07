@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3850629305800815206}
   - component: {fileID: 7266837807307303883}
   - component: {fileID: -9206148854695532030}
+  - component: {fileID: 5198083561140736453}
   m_Layer: 0
   m_Name: SunBullet
   m_TagString: Untagged
@@ -162,3 +163,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: d651698ab6acaee4a8765b96106742f4, type: 2}
+--- !u!114 &5198083561140736453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7875530052690588662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88039de21456577439e09367b5726fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
