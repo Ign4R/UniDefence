@@ -1131,7 +1131,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &387126659
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4434,7 +4434,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -303, y: -34}
+  m_AnchoredPosition: {x: 4, y: -34}
   m_SizeDelta: {x: 235, y: 295}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073625370
@@ -8597,62 +8597,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4085896109797223081, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -495
-      objectReference: {fileID: 0}
     - target: {fileID: 4639789308358449359, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
       propertyPath: m_Name
       value: GameoverScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4639789308358449359, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4972402481715179734, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -307
-      objectReference: {fileID: 0}
-    - target: {fileID: 5412465368109263271, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -314.0587
       objectReference: {fileID: 0}
     - target: {fileID: 7515937181997383142, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 27069161}
-    - target: {fileID: 7567270046565728232, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ddc3620a004e8ca44b7495f670926307, type: 3}
-    - target: {fileID: 7567270046565728232, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8837752351017558715, guid: ff1b9ff6cd2783844afad3ef52ec266f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

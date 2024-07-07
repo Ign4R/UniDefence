@@ -85,6 +85,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
 
     void Kill()
     {
+        AudioManager.instance.Play("GameOver",true);
         gameObject.SetActive(false);
         GameManager.instance.GameOver();
     }

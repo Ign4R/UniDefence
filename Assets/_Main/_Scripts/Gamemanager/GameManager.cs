@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour
         //gameOverClip.Play();
         enemySpawner.StopSpawn();
         player.OnPlayer(false);
-        AudioManager.instance.Play("GameOver");
         Cursor.visible = true;
         gameOverScreen.SetActive(true);
     }

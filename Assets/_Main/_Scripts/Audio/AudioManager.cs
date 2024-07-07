@@ -111,7 +111,7 @@ public class AudioManager : MonoBehaviour
         }
         if (!s.source.isPlaying)
         {
-
+            s.source.loop = false;
             s.source.Stop();
         }
     }

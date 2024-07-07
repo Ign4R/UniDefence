@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
+        print(transform.forward + "forward");
         if (targetDestination != null)
         {
             Move();
@@ -39,20 +40,29 @@ public class Enemy : MonoBehaviour
 
     private void Move()
     {
-        Vector3 direction = targetDestination.position - transform.position;
+        Vector3 destination = Vector3.zero;
+        //Vector3 destination = transform.forward + -transform.position;
+
 
         if (transform.rotation.z == 0)
         {
-            direction.y = 0;
+
+            destination.x = transform.forward.z;
         }
         else
         {
-            direction.x = 0;
+            destination.y = -transform.position.y + transform.forward.z;
         }
 
-        direction = direction.normalized;
+       
+        // Normaliza la dirección para asegurar que tiene una magnitud de 1
+       
+        destination = destination.normalized;
 
-        rb.velocity = direction * enemyData.MoveSpeed;
+        // Ajusta la velocidad del Rigidbody hacia la dirección seleccionada
+        rb.velocity = destination * enemyData.MoveSpeed;
+     
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -112,7 +122,7 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Barrier"))
         {
-            AudioManager.instance.Play("Chainsaw");
+            AudioManager.instance.Stop("Chainsaw");
         }
 
     }

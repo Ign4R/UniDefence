@@ -15,3 +15,4 @@ MonoBehaviour:
   moveSpeed: 1
   maxHealth: 3
   damage: 5
+  levelEnemy: 0
