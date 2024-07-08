@@ -7,18 +7,24 @@ public class RandomUpgrade : MonoBehaviour
 {
     [SerializeField]
     private Button reRoll;
-  [SerializeField] Button[] defenceUpgrades;
+    [SerializeField] Button[] defenceBarrier;
+    [SerializeField] Button[] defenceTurret;
     [SerializeField] Button[] playerUpgrades;
 
     private void Start()
     {
-        Shuffle(defenceUpgrades);
+       
+    }
+    private void OnEnable()
+    {
+        Shuffle(defenceBarrier);
+        Shuffle(defenceTurret);
         Shuffle(playerUpgrades);
     }
     public void ReRoll()
     {
-
-        Shuffle(defenceUpgrades);
+        Shuffle(defenceTurret);
+        Shuffle(defenceBarrier);
         Shuffle(playerUpgrades);
     }
     public void Shuffle(Button[] list)

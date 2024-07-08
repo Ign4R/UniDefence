@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Sound")]
     [SerializeField] AudioSource gameOverClip;
+    private int countUpgrades;
 
     private void Awake()
     {
@@ -137,11 +138,17 @@ public class GameManager : MonoBehaviour
 
     public void NextWave()
     {
-        IsPlayerOn(true);
-        countMax *= 2;
-        ScreenUpgrade.SetActive(false);
-        enemySpawner.ReduceSpawnRate();
-        Time.timeScale = 1f;
+        countUpgrades++;
+        if (countUpgrades >= 2)
+        {
+            countUpgrades = 0;
+            IsPlayerOn(true);
+            countMax *= 2;
+            ScreenUpgrade.SetActive(false);
+            enemySpawner.ReduceSpawnRate();
+            Time.timeScale = 1f;
+        }
+   
 
     }
     void WinGame()
