@@ -27,20 +27,21 @@ public class DefenceTorret : WeaponBehaviour, IDefence
     
     void Update()
     {
-        if (!isFreeze)
+        if (Time.timeScale == 1)
         {
-            Movement();
+            print("scale 1");
+            if (!isFreeze)
+            {
+                Movement();
+            }
+
+            if (Time.time > nextFireTime)
+            {
+                ///TODO: Poner audio de torreta
+                Attack();
+                nextFireTime = Time.time + fireRate;
+            }
         }
-       
-        if (Time.time > nextFireTime) 
-        {
-            ///TODO: Poner audio de torreta
-            Attack();
-            nextFireTime = Time.time + fireRate;
-        }
-
-
-
     }
     public void UpgradeDefence()
     {

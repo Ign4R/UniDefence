@@ -20,10 +20,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject ScreenUpgrade;
 
     [Header("Progress Wave")]
-    [SerializeField] private float countMax=2;
+    [SerializeField] private float itemMax=2;
     [SerializeField] private float waveMax=10;
     [SerializeField] private int waveCount;
-    private float countCurr;
+    private float itemCurr;
     [SerializeField] Image progressBarObj;
     [SerializeField] TMP_Text numWavesText;
     //public UnityEvent UpdateWave;
@@ -54,25 +54,24 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         progressBarObj.fillAmount = 0;
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 
-    public void CheckProgressWave()
+    public void IncreaseBarWave()
     {
-        countCurr++;
+        itemCurr++;
         UpdateProgressBar();
-        if (countCurr >= countMax)
+        if (itemCurr >= itemMax)
         {
             EndWave();
         }
-        //if(countCurr>= midLevel)
-        //{enemyLevel++;
+
     }
 
     void UpdateProgressBar()
     {
         // Calcula el fillAmount basado en el progreso actual
-        float fillValue = countCurr / countMax;
+        float fillValue = itemCurr / itemMax;
 
         fillValue = Mathf.Clamp01(fillValue);
 
@@ -91,18 +90,11 @@ public class GameManager : MonoBehaviour
 
     public void EndWave()
     {
+        itemCurr = 0;
         IsPlayerOn(false);
-
         waveCount++;
-
-        //
         UpdateWavesUI(waveCount);
-        //UpdateWave?.Invoke();
-
-        //cambia el nivel del enemigo.
         ChangeState();
-
-        countCurr = 0;
         UpdateProgressBar();
         if (waveCount >= waveMax)
         {
@@ -139,11 +131,11 @@ public class GameManager : MonoBehaviour
     public void NextWave()
     {
         countUpgrades++;
-        if (countUpgrades >= 2)
+        if (countUpgrades >= 3)
         {
             countUpgrades = 0;
             IsPlayerOn(true);
-            countMax *= 2;
+            itemMax *= 2;
             ScreenUpgrade.SetActive(false);
             enemySpawner.ReduceSpawnRate();
             Time.timeScale = 1f;

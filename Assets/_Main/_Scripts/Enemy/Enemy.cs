@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        print(transform.forward + "forward");
+        //print(transform.forward + "forward");
         if (targetDestination != null)
         {
             Move();
@@ -120,11 +120,12 @@ public class Enemy : MonoBehaviour
                 damageCoroutine = null;
             }
         }
+
         if (collision.gameObject.CompareTag("Barrier"))
         {
             AudioManager.instance.Stop("Chainsaw");
+            //AudioManager.instance.Play("Chainsaw", false, false);
         }
-
     }
 
     IEnumerator ApplyDamageOverTime(IDamageable target)

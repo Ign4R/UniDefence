@@ -50,7 +50,11 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
             coll.enabled = false;
             isResetting = true;
             spriteRenderer.color = Color.red;
-          
+            isAttack = false;
+        }
+        else
+        {
+            isAttack = true;
         }
     }
 
@@ -73,13 +77,11 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
     {
         if (collision.gameObject.CompareTag("Enemy") && !isResetting)
         {
-            CheckHits();
-            isAttack = true;
-            AudioManager.instance.Play("Barrier", false, true);
+            CheckHits();   
             EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
-
             StartCoroutine(Attack(enemy));
         }
+      
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -87,6 +89,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         {
             EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
             StopCoroutine(Attack(enemy));
+            isAttack = false;
 
         }
     }
@@ -96,6 +99,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         {
             if (enemy != null)
             {
+                AudioManager.instance.Play("Barrier");
                 enemy.gameObject.GetComponent<Enemy>().animator.SetTrigger("Attack");
                 //enemy.gameObject.GetComponent<Enemy>().attackClip.Play();
                 enemy.TakeDamage(currentDamage);

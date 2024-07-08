@@ -6,7 +6,7 @@ public class ItemPick : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             AudioManager.instance.Play("Item",true);
-            GameManager.instance.CheckProgressWave();
+            GameManager.instance.IncreaseBarWave();
             gameObject.SetActive(false);
             Destroy(gameObject,1);
         }

@@ -157,7 +157,7 @@ MonoBehaviour:
   gameOverScreen: {fileID: 5577162384848485356}
   winOverScreen: {fileID: 1763284656}
   ScreenUpgrade: {fileID: 302792557}
-  countMax: 2
+  itemMax: 1
   waveMax: 10
   waveCount: 0
   progressBarObj: {fileID: 657387496}
@@ -622,7 +622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &302792558
 RectTransform:
   m_ObjectHideFlags: 0
@@ -852,7 +852,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &375632199
 Transform:
   m_ObjectHideFlags: 0
@@ -1199,7 +1199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &442066379
 Transform:
   m_ObjectHideFlags: 0
@@ -2333,8 +2333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369c6e3dffe125b40a594123411585cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 4bfce470b6603bd4f90df25850588ecc, type: 2}
+  upgradeDefence: {fileID: 1070301681}
   prefabProyectil: {fileID: 7875530052690588662, guid: 45260ab7d9c9e464cb28ceedc55fa0e5, type: 3}
   positionShoot: {fileID: 1394129076}
   _currSpeedT: 0.5
@@ -2903,7 +2903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &943962535
 Transform:
   m_ObjectHideFlags: 0
@@ -3051,7 +3051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &948214839
 Transform:
   m_ObjectHideFlags: 0
@@ -3544,7 +3544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1000286806
 Transform:
   m_ObjectHideFlags: 0
@@ -4459,7 +4459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1103745501
 Transform:
   m_ObjectHideFlags: 0
@@ -6116,8 +6116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369c6e3dffe125b40a594123411585cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 4bfce470b6603bd4f90df25850588ecc, type: 2}
+  upgradeDefence: {fileID: 1070301681}
   prefabProyectil: {fileID: 7875530052690588662, guid: 45260ab7d9c9e464cb28ceedc55fa0e5, type: 3}
   positionShoot: {fileID: 902125069}
   _currSpeedT: 0.5
@@ -6351,7 +6351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1652401642
 Transform:
   m_ObjectHideFlags: 0
@@ -6629,7 +6629,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1685222409
 Transform:
   m_ObjectHideFlags: 0

@@ -104,14 +104,14 @@ public class AudioManager : MonoBehaviour
     public void Stop(string clipName)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
-        if(s == null)
+        s.source.loop = false;
+        if (s == null)
         {
             //Debug.LogError($"Sound: {clipName} does NOT exist!");
             return;
         }
         if (!s.source.isPlaying)
-        {
-            s.source.loop = false;
+        {        
             s.source.Stop();
         }
     }
