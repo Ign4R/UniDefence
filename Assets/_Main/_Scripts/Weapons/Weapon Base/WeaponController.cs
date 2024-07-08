@@ -21,7 +21,7 @@ public class WeaponController : MonoBehaviour
 
     [Header("Change guns")]
     int totalWeapons = 2;
-    static int currentWeaponIndex=0;
+    public static int currentWeaponIndex=0;
     [SerializeField] protected GameObject[] guns;
     [SerializeField] protected GameObject weaponHolder;
     [SerializeField] protected GameObject currentGun;
@@ -30,11 +30,13 @@ public class WeaponController : MonoBehaviour
 
     private void Awake()
     {
+        modFireRate = weaponData.FireRate;
         player = FindObjectOfType<Player>();
 
         // Inicializar la primera arma
         if (guns.Length > 0)
         {
+           
             weaponHolder = guns[0];
             currentGun = guns[0];
         }
@@ -46,7 +48,11 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Start()
     {
-        modFireRate = weaponData.FireRate;
+        for (int i = 0; i < guns.Length; i++)
+        {
+            guns[i].SetActive(false);
+        }
+        guns[currentWeaponIndex].SetActive(true);
         //currentCooldown = weaponData.CooldownDuration;
     }
 

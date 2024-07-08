@@ -18,4 +18,4 @@ MonoBehaviour:
   cooldownDuration: 2
   lifeTime: 0
   maxLevelUpgrade: 0
-  fireRate: 2
+  fireRate: 2.2

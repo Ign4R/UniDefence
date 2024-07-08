@@ -2,12 +2,10 @@ using UnityEngine;
 
 public class DiplomaController : WeaponController
 {
-
-
     protected override void Start()
     {
         base.Start();
-      
+        
     }
 
     protected override void Attack()
