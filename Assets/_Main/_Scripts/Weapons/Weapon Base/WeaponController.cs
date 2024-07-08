@@ -8,14 +8,15 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    protected float modFireRate;
+    protected float modDamage;
+    private float nextFireTime=0;
     [SerializeField] protected Transform positionShoot;
     [Header("Weapon Stats")]
     public WeaponScriptableObject weaponData;
+   
 
-    float currentCooldown; // No se usa actualmente
 
-    public float fireRate = 0.5f;  // Tiempo mínimo entre disparos
-    private float nextFireTime = 0f;  // Tiempo en el que se podrá disparar nuevamente
     protected Player player;
 
     [Header("Change guns")]
@@ -45,6 +46,7 @@ public class WeaponController : MonoBehaviour
 
     protected virtual void Start()
     {
+        modFireRate = weaponData.FireRate;
         //currentCooldown = weaponData.CooldownDuration;
     }
 
@@ -54,7 +56,7 @@ public class WeaponController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime)
         {
             Attack();
-            nextFireTime = Time.time + fireRate;  // Actualizar el tiempo en el que se podrá disparar nuevamente
+            nextFireTime = Time.time + modFireRate; // Actualizar el tiempo en el que se podrá disparar nuevamente
         }
 
         // Cambio de arma

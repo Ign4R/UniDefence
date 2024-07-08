@@ -71,7 +71,7 @@ public class Building : MonoBehaviour, IDamageable
             var targetUpgrade = item.GetComponent<IDefence>();
             if (item.CompareTag(defenceType.ToString()) && targetUpgrade.IsActive)
             {
-                targetUpgrade.UpgradeStats();
+                targetUpgrade.UpgradeDefence();
          
             }
         }

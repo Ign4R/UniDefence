@@ -74,19 +74,7 @@ public class BookBehaviour : WeaponBehaviour
         //Debug.Log("direction" + direction);
         return direction;
     }
-    public float RandomNum()
-    {
-        if (Random.Range(-2, 1) >= 0) 
-        {
-            print("aca1");
-           return dirH.x;
-        }
-        else
-        {
-            print("aca2");
-            return -dirH.x;
-        }
-    }
+  
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))

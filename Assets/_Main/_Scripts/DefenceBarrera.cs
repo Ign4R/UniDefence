@@ -54,7 +54,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         }
     }
 
-    public override void UpgradeStats()
+    public void UpgradeDefence()
     {
         countUpgrade++;
         if (countUpgrade <= 10)

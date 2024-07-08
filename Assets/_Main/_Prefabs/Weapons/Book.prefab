@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 60ef1182e40b0cd4689bc31ff1ef70ed, type: 2}
+  currentFireRate: 2
   launchOffset: {x: 0, y: 0, z: 0}
   dirH: {x: 2, y: 3, z: 0}
   dirV: {x: 0, y: 5, z: 0}

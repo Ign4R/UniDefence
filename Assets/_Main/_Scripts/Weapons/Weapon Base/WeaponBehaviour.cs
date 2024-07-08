@@ -14,22 +14,25 @@ public class WeaponBehaviour : MonoBehaviour
     protected bool isActive;
 
     //current stats
+    protected float currentFireRate;
     protected float currentDamage;
     protected float currentSpeed;
     protected float currentCooldownDuration;
     protected int maxLife;
-    public virtual void UpgradeStats()
-    {
 
-    }
     protected virtual void Awake()
     {
+        currentFireRate = weaponData.FireRate;
         currentDamage = weaponData.MaxDamage;
         currentSpeed = weaponData.Speed;
         currentCooldownDuration = weaponData.CooldownDuration;
         maxLife = weaponData.LifeTime;
     }
-
+    public void SetStats(float modDamage, float modFireRate)
+    {
+        currentDamage += modDamage;
+        currentFireRate += modFireRate;
+    }
     protected virtual void Start()
     {
 

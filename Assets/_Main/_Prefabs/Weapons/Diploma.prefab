@@ -158,7 +158,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5504044244432219075}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc98e460dce044d45b1537b380f43181, type: 3}
+  m_Script: {fileID: 11500000, guid: 255366e9a07413748a20b9531880e024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: e2ef43b36d6d1df4681dc6cc4a96f44a, type: 2}
+  currentFireRate: 1

@@ -18,10 +18,13 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField] private float cooldownDuration; //enfriamiento.
     public float CooldownDuration { get => cooldownDuration; set => cooldownDuration = value; }
 
-    [SerializeField] private int lifeTime; //tiempo de alcance del arma..
+    [SerializeField] private int lifeTime; 
     public int LifeTime { get => lifeTime; set => lifeTime = value; }
 
-    [SerializeField] private int maxLevelUpgrade; //tiempo de alcance del arma..
-    public int MaxLevelUpgrade { get => maxLevelUpgrade; set => maxLevelUpgrade = value; }
+    [SerializeField] private int maxLevelUpgrade; 
+    public int MaxLevelUpgrade { get => maxLevelUpgrade; set => maxLevelUpgrade = value; }   
+
+    [SerializeField] private float fireRate; 
+    public float FireRate { get => fireRate; set => fireRate = value; }
 
 }

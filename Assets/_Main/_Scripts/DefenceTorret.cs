@@ -42,7 +42,7 @@ public class DefenceTorret : WeaponBehaviour, IDefence
 
 
     }
-    public override void UpgradeStats()
+    public void UpgradeDefence()
     {
         countUpgrade++;
 
@@ -75,7 +75,7 @@ public class DefenceTorret : WeaponBehaviour, IDefence
         //isAttacking = true;
         //Configuro con direccion y daño
         GameObject prefab = Instantiate(prefabProyectil, positionShoot.position,Quaternion.identity);
-        BulletBehaviour bullet = prefab.GetComponent<BulletBehaviour>(); 
+        DiplomaBehaviour bullet = prefab.GetComponent<DiplomaBehaviour>(); 
         bullet.DirectionChecker(transform.right);
         StartCoroutine(ResumeMovement());
     }

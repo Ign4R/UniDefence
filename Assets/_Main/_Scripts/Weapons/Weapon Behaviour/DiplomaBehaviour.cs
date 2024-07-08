@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 
-public class BulletBehaviour : WeaponBehaviour
+public class DiplomaBehaviour : WeaponBehaviour
 {
     private float currentPierce = 0;
-
+    public float CurrFireRate { get => currentFireRate; } 
     protected override void Start()
     {
         base.Start();
@@ -46,7 +46,7 @@ public class BulletBehaviour : WeaponBehaviour
         transform.localScale = scale;
         transform.rotation = Quaternion.Euler(rotation);
     }
-
+   
     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
