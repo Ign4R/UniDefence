@@ -28,7 +28,7 @@ public class Building : MonoBehaviour, IDamageable
     }
     public void TakeDamage()
     {
-        AudioManager.instance.Play("Chainsaw");
+        AudioManager.instance.Play("Chainsaw",true);
         currentHealth -= damage;
         hpBar.SetState(currentHealth, buildingData.MaxHealth);
         if (currentHealth <= 0)

@@ -89,8 +89,11 @@ public class Enemy : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Barrier"))
         {
-            AudioManager.instance.Play("Chainsaw",false,true);
+            countTargets++;
+            DefenceBarrera target = collision.gameObject.GetComponent<DefenceBarrera>();
+            damageCoroutine = StartCoroutine(ApplyDamageOverTime(target));
         }
+     
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -120,12 +123,15 @@ public class Enemy : MonoBehaviour
                 damageCoroutine = null;
             }
         }
-
         if (collision.gameObject.CompareTag("Barrier"))
         {
-            AudioManager.instance.Stop("Chainsaw");
-            //AudioManager.instance.Play("Chainsaw", false, false);
+            countTargets--;
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+            }
         }
+
     }
 
     IEnumerator ApplyDamageOverTime(IDamageable target)
@@ -134,8 +140,10 @@ public class Enemy : MonoBehaviour
         {
             if (countTargets == 0) yield break;
             target.TakeDamage();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
 
         }
     }
+
+
 }

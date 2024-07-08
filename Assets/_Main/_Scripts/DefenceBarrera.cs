@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DefenceBarrera : WeaponBehaviour, IDefence
+public class DefenceBarrera : WeaponBehaviour, IDefence, IDamageable
 {
     public Button upgradeDefence;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -99,6 +99,7 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
         {
             if (enemy != null)
             {
+    
                 AudioManager.instance.Play("Barrier");
                 enemy.gameObject.GetComponent<Enemy>().animator.SetTrigger("Attack");
                 //enemy.gameObject.GetComponent<Enemy>().attackClip.Play();
@@ -116,7 +117,13 @@ public class DefenceBarrera : WeaponBehaviour, IDefence
 
     }
 
+    public void SetDamage(float dmg)
+    {
+        throw new NotImplementedException();
+    }
 
-
-   
+    public void TakeDamage()
+    {
+        AudioManager.instance.Play("Chainsaw",true);
+    }
 }

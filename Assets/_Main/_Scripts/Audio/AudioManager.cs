@@ -50,6 +50,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        //Muted();
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             Stop("MusicGameplay");
@@ -104,7 +105,7 @@ public class AudioManager : MonoBehaviour
     public void Stop(string clipName)
     {
         Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
-        s.source.loop = false;
+
         if (s == null)
         {
             //Debug.LogError($"Sound: {clipName} does NOT exist!");
@@ -115,6 +116,17 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
+    public void StopLoop(string clipName)
+    {
+        Sound s = Array.Find(sounds, dummySound => dummySound.clipName == clipName);
+        s.source.loop = false;
+        if (s == null)
+        {
+            //Debug.LogError($"Sound: {clipName} does NOT exist!");
+            return;
+        }
+  
+    }
 
     public void UpdateMixerVolumeMusic()
     {
@@ -122,7 +134,11 @@ public class AudioManager : MonoBehaviour
         musicMixerGroup.audioMixer.SetFloat("Music Volume", volumeMusic);
         PlayerPrefs.SetFloat("musicaVolume", AudioOptionManager.MusicVolume);
     }
-
+    public void Muted()
+    {
+        soundEffectsMixterGruop.audioMixer.SetFloat("Sound Effect Volume", 0 * 20);
+        PlayerPrefs.SetFloat("soundVolume", AudioOptionManager.SoundEffectsVolume);
+    }
     public void UpdateMixerVolumeSound()
     {
         float soundMusic = Mathf.Log10(AudioOptionManager.SoundEffectsVolume) * 20;
