@@ -7024,6 +7024,7 @@ MonoBehaviour:
   hpBar: {fileID: 95036649}
   upgradeT: {fileID: 1070301681}
   upgradeB: {fileID: 1068289879}
+  addDefence: {fileID: 547161238}
   defenses:
   - {fileID: 649802679}
   - {fileID: 1597085397}
@@ -8893,8 +8894,8 @@ MonoBehaviour:
   hpBar: {fileID: 6462954670665495748}
   moveSpeed: 2
   powerUpClip: {fileID: 0}
-  shieldMaxHits: 3
-  rechargeTime: 2
+  shieldMaxHits: 2
+  rechargeTime: 10
 --- !u!224 &8774756832014173191
 RectTransform:
   m_ObjectHideFlags: 0

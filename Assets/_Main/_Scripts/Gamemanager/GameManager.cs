@@ -102,6 +102,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            Cursor.visible = true;
             AudioManager.instance.Muted();
             ScreenUpgrade.SetActive(true);
             Time.timeScale = 0f;
@@ -131,10 +132,12 @@ public class GameManager : MonoBehaviour
 
     public void NextWave()
     {
+    
         AudioManager.instance.UpdateMixerVolumeSound();
         countUpgrades++;
         if (countUpgrades >= 3)
         {
+            Cursor.visible = false;
             countUpgrades = 0;
             IsPlayerOn(true);
             itemMax *= 2;

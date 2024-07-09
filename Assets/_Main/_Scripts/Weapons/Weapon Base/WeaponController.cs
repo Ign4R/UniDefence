@@ -59,7 +59,7 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         // Manejo del disparo
-        if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime)
+        if (Time.time > nextFireTime)
         {
             Attack();
             nextFireTime = Time.time + modFireRate; // Actualizar el tiempo en el que se podrá disparar nuevamente

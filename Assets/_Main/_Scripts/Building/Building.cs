@@ -12,9 +12,11 @@ public class Building : MonoBehaviour, IDamageable
     private bool maxUpgrade;
     [SerializeField] private Button upgradeT;
     [SerializeField] private Button upgradeB;
+    [SerializeField] private Button addDefence;
 
     float currentHealth;
     [SerializeField] private GameObject[] defenses;
+    private int countTurret;
 
     private void Awake()
     {
@@ -51,11 +53,17 @@ public class Building : MonoBehaviour, IDamageable
                 defence.IsActive = true;
                 break;
             }
+            
         }
 
         if (defenceType == "Turret")
         {
+            countTurret++;       
             upgradeT.interactable = true;
+            if (countTurret >= 2)
+            {
+                addDefence.interactable = false;
+            }
         }
         if (defenceType == "Barrier")
         {
