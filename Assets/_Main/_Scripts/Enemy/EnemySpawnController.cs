@@ -11,7 +11,7 @@ public class EnemySpawnController : MonoBehaviour
 
     /// enemyLevel
     [SerializeField] GameObject enemyParent;
-    [Range(1,5f)][SerializeReference] public float spawnRate = 5; //rango de aparicion, range(limita el numero, y no puede ser menor a 1 ni mayor a 10)
+    [Range(1,10f)][SerializeReference] public float spawnRate = 10; //rango de aparicion, range(limita el numero, y no puede ser menor a 1 ni mayor a 10)
 
     // Start is called before the first frame update
     void Start()

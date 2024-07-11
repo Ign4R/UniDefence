@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyChainsaw3
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  maxHealth: 10
+  maxHealth: 6
   damage: 8
   levelEnemy: 2

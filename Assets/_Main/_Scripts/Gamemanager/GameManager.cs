@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //gameOverClip.Play();
+        AudioManager.instance.Play("GameOver");
         enemySpawner.StopSpawn();
         player.OnPlayer(false);
         Cursor.visible = true;
