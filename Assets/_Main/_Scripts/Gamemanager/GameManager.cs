@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using static Cinemachine.DocumentationSortingAttribute;
-using UnityEngine.Events;
+
 
 public class GameManager : MonoBehaviour
 {
     //int midLevel
     //int endLevel
+    [SerializeField] GameObject[] uiPCWeb;
+    [SerializeField] GameObject[] uiMobileWeb;
     public static GameManager instance;
     public EnemySpawnController enemySpawner;
     public Player player;
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject winOverScreen;
     [SerializeField] GameObject ScreenUpgrade;
+
 
     [Header("Progress Wave")]
     [SerializeField] private float itemMax=2;
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
     [Header("Sound")]
     [SerializeField] AudioSource gameOverClip;
     private int countUpgrades;
-
+    
     private void Awake()
     {
         if (instance == null)
@@ -53,10 +55,28 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+
+        UIChangeDevice();
         progressBarObj.fillAmount = 0;
         Cursor.visible = false;
     }
-
+    public void UIChangeDevice()
+    {
+        if (MobileDetector.IsMobile())
+        {
+            foreach (var item in uiMobileWeb)
+            {
+                item.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (var item in uiPCWeb)
+            {
+                item.SetActive(true);
+            }
+        }
+    }
     public void IncreaseBarWave()
     {
         itemCurr++;

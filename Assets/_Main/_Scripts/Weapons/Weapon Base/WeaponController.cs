@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class WeaponController : MonoBehaviour
 {
+    public RectTransform[] noTouchAreas;
     protected float modFireRate;
     protected float modDamage;
     private float nextFireTime=0;
@@ -59,19 +60,72 @@ public class WeaponController : MonoBehaviour
     void Update()
     {
         // Manejo del disparo
-        if (Input.GetMouseButtonDown(0) && Time.time > nextFireTime)
+        var inputActive = Input.GetMouseButtonDown(0);
+        if (MobileDetector.IsMobile())
+        {
+            inputActive = InputTouch();
+        }
+       
+        if (inputActive && Time.time > nextFireTime)
         {
             Attack();
             nextFireTime = Time.time + modFireRate; // Actualizar el tiempo en el que se podrá disparar nuevamente
         }
-
-        // Cambio de arma
-        if (Input.GetKeyDown(KeyCode.Q))
+        else if (Input.GetKeyDown(KeyCode.Q))  // Cambio de arma
         {
             ChangeWeapon();
         }
     }
-    private void ChangeWeapon()
+
+    public bool InputTouch()
+    {
+        // Verificar si hay al menos un toque
+        if (Input.touchCount > 1)
+        {
+            // Iterar sobre todos los toques
+            for (int i = 1; i < Input.touchCount; i++)
+            {
+                if (!IsMouseInsideNoTouchAreas())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        if (Input.touchCount > 0 && !IsMouseInsideNoTouchAreas())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    bool IsMouseInsideNoTouchAreas()
+    {
+        if (noTouchAreas == null || noTouchAreas.Length == 0)
+            return false;
+
+        Vector2 touchPosition = Input.mousePosition;
+
+        foreach (RectTransform area in noTouchAreas)
+        {
+            Vector2 localTouchPosition;
+            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(area, touchPosition, null, out localTouchPosition))
+            {
+                if (area.rect.Contains(localTouchPosition))
+                {
+                    return true; // Devolver true si el toque está dentro de alguna de las áreas de "no toque"
+                }
+            }
+        }
+
+        return false; // Devolver false si el toque no está dentro de ninguna de las áreas de "no toque"
+    }
+
+    public void ChangeWeapon()
     {
         // Desactivar el arma actual
         guns[currentWeaponIndex].SetActive(false);

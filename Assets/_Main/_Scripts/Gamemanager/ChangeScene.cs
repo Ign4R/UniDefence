@@ -7,6 +7,7 @@ public class ChangeScene : MonoBehaviour
 {
     [SerializeField] GameObject CreditOn;
     [SerializeField] GameObject SettingOn;
+
     [SerializeField] bool paused = false;
 
     public void PlayAgain()

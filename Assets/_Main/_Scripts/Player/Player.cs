@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public VariableJoystick variableJoystick;
     Rigidbody2D rb;
-   [SerializeField] private Animator _animator;
+    [SerializeField] private Animator _animator;
     public Sprite[] sprites;
     public SpriteRenderer spriteRenderer;
-    [Header("Movement")]
-    float xMove;
-    float yMove;
     private PlayerStats _stats;
-    private int _speed;
     public Vector3 moveDirection;
     public Vector3 lastMove;
+    public bool isTest;
 
     private void Awake()
     {
@@ -30,9 +28,16 @@ public class Player : MonoBehaviour
     }
     void Move()
     {
+       
         float xMove = Input.GetAxisRaw("Horizontal");
         float yMove = Input.GetAxisRaw("Vertical");
 
+        if (MobileDetector.IsMobile()|| isTest)
+        {
+            xMove = variableJoystick.Horizontal;
+            yMove = variableJoystick.Vertical;
+
+        }
         if (Mathf.Abs(xMove) > Mathf.Abs(yMove))
         {
             // Si el movimiento horizontal es mayor, ignorar el movimiento vertical
