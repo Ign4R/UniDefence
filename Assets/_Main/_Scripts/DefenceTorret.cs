@@ -29,7 +29,6 @@ public class DefenceTorret : WeaponBehaviour, IDefence
     {
         if (Time.timeScale == 1)
         {
-            print("scale 1");
             if (!isFreeze)
             {
                 Movement();

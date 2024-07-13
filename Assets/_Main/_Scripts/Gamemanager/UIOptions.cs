@@ -18,7 +18,7 @@ public class UIOptions : MonoBehaviour
         }
     }
 
-    void Pause()
+    public void Pause()
     {
         //buttonsPause[1].interactable = true;
         GameManager.instance.IsPlayerOn(false);
@@ -61,8 +61,5 @@ public class UIOptions : MonoBehaviour
     }
 
 
-    public void nose()
-    {
-    
-    }
+
 }

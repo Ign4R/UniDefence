@@ -79,36 +79,43 @@ public class WeaponController : MonoBehaviour
 
     public bool InputTouch()
     {
-        // Verificar si hay al menos un toque
+        // Verificar si hay al menos dos toques para poder comparar a partir del segundo
         if (Input.touchCount > 1)
         {
-            // Iterar sobre todos los toques
+            // Iterar sobre los toques a partir del segundo (índice 1)
             for (int i = 1; i < Input.touchCount; i++)
             {
-                if (!IsMouseInsideNoTouchAreas())
+                Touch touch = Input.GetTouch(i);
+
+                // Verificar si el toque NO está dentro de alguna área de "no toque"
+                if (!IsMouseInsideNoTouchAreas(touch.position))
                 {
-                    return true;
+                    return true; // Devolver true si encontramos al menos un toque fuera de un área de "no toque"
                 }
             }
+
+            // Si todos los toques a partir del segundo están dentro de áreas de "no toque", devolver false
             return false;
         }
 
-        if (Input.touchCount > 0 && !IsMouseInsideNoTouchAreas())
+        // Verificar si el primer toque (índice 0) NO está dentro de alguna área de "no toque"
+        if (Input.touchCount > 0)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            Touch firstTouch = Input.GetTouch(0);
+            if (!IsMouseInsideNoTouchAreas(firstTouch.position))
+            {
+                return true; // Devolver true si el primer toque está fuera de un área de "no toque"
+            }
         }
 
+        // Devolver false si no se detectó ningún toque o si todos los toques están dentro de áreas de "no toque"
+        return false;
     }
-    bool IsMouseInsideNoTouchAreas()
+
+    bool IsMouseInsideNoTouchAreas(Vector2 touchPosition)
     {
         if (noTouchAreas == null || noTouchAreas.Length == 0)
             return false;
-
-        Vector2 touchPosition = Input.mousePosition;
 
         foreach (RectTransform area in noTouchAreas)
         {
@@ -124,7 +131,6 @@ public class WeaponController : MonoBehaviour
 
         return false; // Devolver false si el toque no está dentro de ninguna de las áreas de "no toque"
     }
-
     public void ChangeWeapon()
     {
         // Desactivar el arma actual

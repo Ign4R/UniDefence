@@ -24,7 +24,7 @@ public class DiplomaController : WeaponController
     {
         modDamage += 1.5f;
         var increment = 0.2f;
-        if (modFireRate > 0.1f)
+        if (modFireRate >= 0.2f)
         {
             modFireRate -= increment;
         }
