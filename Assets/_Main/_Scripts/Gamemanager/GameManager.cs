@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
     [Header("Sound")]
     [SerializeField] AudioSource gameOverClip;
     private int countUpgrades;
+    [SerializeField] private int maxUpgrades = 1;
     
     private void Awake()
     {
@@ -155,7 +156,7 @@ public class GameManager : MonoBehaviour
     
         AudioManager.instance.UpdateMixerVolumeSound();
         countUpgrades++;
-        if (countUpgrades >= 3)
+        if (countUpgrades >= maxUpgrades)
         {
             Cursor.visible = false;
             countUpgrades = 0;
