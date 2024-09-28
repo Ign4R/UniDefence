@@ -1788,8 +1788,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 375632202}
   coll: {fileID: 375632200}
   maxHits: 3
@@ -2105,8 +2105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 442066380}
   coll: {fileID: 442066382}
   maxHits: 3
@@ -2651,7 +2651,7 @@ MonoBehaviour:
   - {fileID: 820538978112504566, guid: b98e0120640d96f4e966dfa6972be2da, type: 3}
   enemyLevel: 0
   enemyParent: {fileID: 1041058338}
-  spawnRate: 7
+  spawnRate: 10
 --- !u!1 &528295363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3888,8 +3888,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 943962538}
   coll: {fileID: 943962536}
   maxHits: 3
@@ -4036,8 +4036,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 948214842}
   coll: {fileID: 948214840}
   maxHits: 3
@@ -4528,8 +4528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 1000286809}
   coll: {fileID: 1000286807}
   maxHits: 3
@@ -4854,6 +4854,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1066233133 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 335664445637261921, guid: c29e871aa934fc7498caa26bb611b447, type: 3}
+  m_PrefabInstance: {fileID: 149550321}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1068289877
 GameObject:
   m_ObjectHideFlags: 0
@@ -5687,8 +5698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 1103745504}
   coll: {fileID: 1103745502}
   maxHits: 3
@@ -7732,8 +7743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 1652401645}
   coll: {fileID: 1652401643}
   maxHits: 3
@@ -8010,8 +8021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b582ad6dd235fd4b8d09124a53cfa79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponData: {fileID: 0}
-  upgradeDefence: {fileID: 0}
+  weaponData: {fileID: 11400000, guid: 757cbf51d4b2eea45946df5b863bac4e, type: 2}
+  upgradeDefence: {fileID: 1066233133}
   spriteRenderer: {fileID: 1685222412}
   coll: {fileID: 1685222410}
   maxHits: 3

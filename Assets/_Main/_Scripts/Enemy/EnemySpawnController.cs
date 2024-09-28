@@ -17,7 +17,7 @@ public class EnemySpawnController : MonoBehaviour
     void Start()
     {
         canSpawn = true;
-        Instantiate(enemyPrefabs[enemyLevel], enemyParent.transform);
+        SpawnEnemiesMultipleTimes(4);
         spawnerCoroutine = StartCoroutine(SpawnNewEnemy());
 
     }
@@ -29,9 +29,11 @@ public class EnemySpawnController : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
 
             // Ensure enemyLevel is within the correct range
-            if (enemyLevel >= 0 && enemyLevel <= enemyPrefabs.Length)
+            if (enemyLevel >= 0 && enemyLevel < enemyPrefabs.Length)
             {
-                Instantiate(enemyPrefabs[enemyLevel], enemyParent.transform);
+                SpawnEnemiesMultipleTimes(4);
+
+
             }
             else
             {
@@ -64,5 +66,13 @@ public class EnemySpawnController : MonoBehaviour
     public void StopSpawn()
     {
         StopCoroutine(spawnerCoroutine);
+    }
+
+    void SpawnEnemiesMultipleTimes(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(enemyPrefabs[enemyLevel], enemyParent.transform);
+        }
     }
 }
